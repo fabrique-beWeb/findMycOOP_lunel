@@ -10,17 +10,22 @@
     <header>
         <h1>Find My cOOp !</h1>
     </header>
-    <nav>
-        <ul class="navbar">
-            <li><a href="{{path('home')}}">Accueil</a></li>
-            <li><a href="{{path('projets')}}">Projets</a></li>
-            <li><a href="{{path('membres')}}">Membres</a></li>
-            <li><a href="{{path('bar')}}">Bar</a></li>
-        </ul>
-    </nav>
-    <section{% block body %}>
-ICI le BLOCK BODY
-        </section{% endblock %}>
+    {% block nav %}
+        <nav>
+            <ul class="navbar">
+                <li><a href="{{path('home')}}">Accueil</a></li>
+                <li><a href="{{path('projets')}}">Projets</a></li>
+                <li><a href="{{path('membres')}}">Membres</a></li>
+                <li><a href="{{path('bar')}}">Bar</a></li>
+            </ul>
+        </nav>
+    {% endblock %}
+    <section>
+        {% block body %}
+            ICI le BLOCK BODY
+        {% endblock %}
+    </section>
+    {% block activités %}
         <section class="evenements">
             <h3>Activités</h3>
             <div>
@@ -36,8 +41,9 @@ ICI le BLOCK BODY
                 <a href="">détails</a>
             </div>
         </section>
-        <footer class="text-center">
-            <p>&COPY;Copyright by BeWeb.</p>
-        </footer>
-    </body>
+    {% endblock %}
+    <footer class="text-center">
+        <p>&COPY;Copyright by BeWeb.</p>
+    </footer>
+</body>
 </html>
