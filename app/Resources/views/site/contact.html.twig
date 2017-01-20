@@ -1,25 +1,29 @@
 {% extends ':site:home.html.twig' %}
 {% block nav %}{% endblock %}
 {% block body %}
-    <section>
-        <h3>Contact</h3>
-        <section>
-            <p>email</p>
-        </section>
-        <section>
-            <p>s'inscrire</p>
-            <p>informations</p>
-            <p>contact</p>
-        </section>
-        <section>
-            <p>message</p>
-        </section>
-        <section>
-            <p>Envoyer</p>
-        </section>
-        <section>
-            <a href="{{path('home')}}">Annuler</a>
-        </section>
+    <section class="container-fluid">
+        <div class="row">
+            <h3 class="col-lg-offset-6">Contact</h3>
+            <div class="col-lg-offset-6">
+                <section>
+                    <p>email</p>
+                </section>
+                <section>
+                    <p>s'inscrire</p>
+                    <p>informations</p>
+                    <p>contact</p>
+                </section>
+                <section>
+                    <p>message</p>
+                </section>
+                <section>
+                    <p>Envoyer</p>
+                </section>
+                <section>
+                    <a class="col-lg-offset-6" href="{{path('home')}}">Annuler</a>
+                </section>
+            </div>
+        </div>
     </section>
 {% endblock %}
 {% block activités %}{% endblock %}

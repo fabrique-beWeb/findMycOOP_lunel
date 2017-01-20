@@ -3,47 +3,93 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Find My cOOp !{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-</head>
-<body>
-    <header>
-        <h1>Find My cOOp !</h1>
-    </header>
-    {% block nav %}
-        <nav>
-            <ul class="navbar">
-                <li><a href="{{path('home')}}">Accueil</a></li>
-                <li><a href="{{path('projets')}}">Projets</a></li>
-                <li><a href="{{path('membres')}}">Membres</a></li>
-                <li><a href="{{path('bar')}}">Bar</a></li>
-            </ul>
-        </nav>
-    {% endblock %}
-    <section>
-        {% block body %}
-            ICI le BLOCK BODY
+        {% block stylesheet %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+            <link rel="stylesheet" href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" />
         {% endblock %}
-    </section>
-    {% block activités %}
-        <section class="evenements">
-            <h3>Activités</h3>
-            <div>
-                <p>01/01/2017</p>
-                <h4>Repas du nouvel an.</h4>
-                <p>J'invite qui veux a venir partager le premier repas de l'année chez ma voisine.</p>
-                <a href=''>détails</a>
+    </head>
+    <body>
+        <header class="text-center">
+            <h1>Find My cOOp !</h1>
+        </header>
+        {% block nav %}
+            <div class="container-fluid">
+                <div class="row">
+                    <nav class="navbar navbar-inverse">
+                        <ul class="nav text-center">
+                            <li class="col-lg-3"><a href="{{path('home')}}">Accueil</a></li>
+                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>
+                            <li class="col-lg-3"><a href="{{path('membres')}}">Membres</a></li>
+                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>
+                                {#<li><a href="{{path('forum')}}">forum</a></li>
+                                <li><a href="{{path('details')}}">details</a></li>
+                                <li><a href="{{path('carnetdebord')}}">CDB</a></li>#}
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <div>
-                <p>24/12/2016</p>
-                <h4>Reveillon de Noël</h4>
-                <p>Reveillon de Noël chez le père noël. (prevoir verre de lait et cookies)</p>
-                <a href="">détails</a>
+        {% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+                <section>
+                    <div class="col-lg-offset-1 col-lg-6">
+                        {% block body %}
+                            <p>Le Lorem Ipsum est simplement du faux texte employé 
+                                dans la composition et la mise en page avant impression. 
+                                Le Lorem Ipsum est le faux texte standard de l'imprimerie 
+                                depuis les années 1500, quand un peintre anonyme assembla 
+                                ensemble des morceaux de texte pour réaliser un livre 
+                                spécimen de polices de texte. Il n'a pas fait que survivre 
+                                cinq siècles, mais s'est aussi adapté à la bureautique 
+                                informatique, sans que son contenu n'en soit modifié. 
+                                Il a été popularisé dans les années 1960 grâce à la vente 
+                                de feuilles Letraset contenant des passages du Lorem Ipsum,
+                                et, plus récemment, par son inclusion dans des applications 
+                                de mise en page de texte, comme Aldus PageMaker.</p>
+                            <p>Le Lorem Ipsum est simplement du faux texte employé 
+                                dans la composition et la mise en page avant impression. 
+                                Le Lorem Ipsum est le faux texte standard de l'imprimerie 
+                                depuis les années 1500, quand un peintre anonyme assembla 
+                                ensemble des morceaux de texte pour réaliser un livre 
+                                spécimen de polices de texte. Il n'a pas fait que survivre 
+                                cinq siècles, mais s'est aussi adapté à la bureautique 
+                                informatique, sans que son contenu n'en soit modifié. 
+                                Il a été popularisé dans les années 1960 grâce à la vente 
+                                de feuilles Letraset contenant des passages du Lorem Ipsum,
+                                et, plus récemment, par son inclusion dans des applications 
+                                de mise en page de texte, comme Aldus PageMaker.</p>
+                            <p class='text-center'>Pour plus d'informations ou si vous voulez devenir contributeur ou collaborateur 
+                                sur un projet <a href="{{path('contact')}}">Contactez nous</a></p>
+                            {% endblock %}
+                    </div>
+                </section>
+                {% block activités %}
+                    <section class="evenements">
+                        <div class="container">
+                            <div class="col-lg-offset-1 col-lg-3 ">
+                                <a class="col-lg-offset-10" href="{{path('login')}}">login</a>
+                                <h2 class="text-center">Activités</h2>
+                                <div>
+                                    <p>01/01/2017</p>
+                                    <h3 class="text-center">Repas du nouvel an</h3>
+                                    <p>J'invite qui veux a venir partager le premier repas de l'année chez ma voisine.</p>
+                                    <a class="col-lg-offset-9 col-lg-3" href=''>détails</a>
+                                </div>
+                                <div>
+                                    <p>24/12/2016</p>
+                                    <h3 class="text-center">Reveillon de Noël</h3>
+                                    <p>Reveillon de Noël chez le père noël. (prevoir verre de lait et cookies)</p>
+                                    <a class="col-lg-offset-9 col-lg-3" href=''>détails</a>
+                                </div>
+                                <a class="col-lg-offset-5 text-center" href="" >&Congruent;</a>
+                            </div>
+                        </div>
+                    </section>
+                {% endblock %}
             </div>
-        </section>
-    {% endblock %}
-    <footer class="text-center">
-        <p>&COPY;Copyright by BeWeb.</p>
-    </footer>
-</body>
+        </div>
+        <footer class="text-center">
+            <p>&COPY;Copyright by BeWeb.</p>
+        </footer>
+    </body>
 </html>

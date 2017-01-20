@@ -2,10 +2,14 @@
 {% block nav %}{% endblock %}
 {% block body %}
     <section>
-        <p>username...</p>
-        <p>password</p>
-        <p>login</p>
-        <a href="{{path('home')}}">Annuler</a>
+        <div class="container">
+            <div class="col-lg-offset-4">
+                <p>username...</p>
+                <p>password</p>
+                <p>login</p>
+                <a class="col-lg-offset-2" href="{{path('home')}}">Annuler</a>
+            </div>
+        </div>
     </section>
 {% endblock %}
 {% block activités %}{% endblock %}
