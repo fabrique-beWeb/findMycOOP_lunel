@@ -6,6 +6,7 @@
         {% block stylesheet %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         {% endblock %}
     </head>
     <body>
@@ -31,9 +32,10 @@
         {% endblock %}
         <div class="container-fluid">
             <div class="row">
-                <section>
-                    <div class="col-lg-offset-1 col-lg-6">
-                        {% block body %}
+
+                {% block body %}
+                    <section>
+                        <div class="col-lg-offset-1 col-lg-6">
                             <p>Le Lorem Ipsum est simplement du faux texte employé 
                                 dans la composition et la mise en page avant impression. 
                                 Le Lorem Ipsum est le faux texte standard de l'imprimerie 
@@ -60,9 +62,10 @@
                                 de mise en page de texte, comme Aldus PageMaker.</p>
                             <p class='text-center'>Pour plus d'informations ou si vous voulez devenir contributeur ou collaborateur 
                                 sur un projet <a href="{{path('contact')}}">Contactez nous</a></p>
-                            {% endblock %}
-                    </div>
-                </section>
+                        </div>
+                    </section>
+                {% endblock %}
+
                 {% block activités %}
                     <section class="evenements">
                         <div class="container">
@@ -81,7 +84,7 @@
                                     <p>Reveillon de Noël chez le père noël. (prevoir verre de lait et cookies)</p>
                                     <a class="col-lg-offset-9 col-lg-3" href=''>détails</a>
                                 </div>
-                                <a class="col-lg-offset-5 text-center" href="" >&Congruent;</a>
+                                <a class="col-lg-offset-6 text-center" href="" >&Congruent;</a>
                             </div>
                         </div>
                     </section>
