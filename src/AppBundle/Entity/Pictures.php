@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Pictures
@@ -10,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="pictures")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PicturesRepository")
  */
-class Pictures
-{
+class Pictures {
+
     /**
      * @var int
      *
@@ -37,26 +39,24 @@ class Pictures
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="post", type="string", length=255)
+     * @ManyToOne(targetEntity="Post")
+     * @JoinColumn(name="fk_post", referencedColumnName="id")
      */
     private $post;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="fk_user", referencedColumnName="id")
      */
     private $user;
-
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -67,8 +67,7 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
         $this->url = $url;
 
         return $this;
@@ -79,8 +78,7 @@ class Pictures
      *
      * @return string
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
@@ -91,8 +89,7 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setAlt($alt)
-    {
+    public function setAlt($alt) {
         $this->alt = $alt;
 
         return $this;
@@ -103,8 +100,7 @@ class Pictures
      *
      * @return string
      */
-    public function getAlt()
-    {
+    public function getAlt() {
         return $this->alt;
     }
 
@@ -115,8 +111,7 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setPost($post)
-    {
+    public function setPost($post) {
         $this->post = $post;
 
         return $this;
@@ -127,8 +122,7 @@ class Pictures
      *
      * @return string
      */
-    public function getPost()
-    {
+    public function getPost() {
         return $this->post;
     }
 
@@ -139,8 +133,7 @@ class Pictures
      *
      * @return Pictures
      */
-    public function setUser($user)
-    {
+    public function setUser($user) {
         $this->user = $user;
 
         return $this;
@@ -151,9 +144,8 @@ class Pictures
      *
      * @return string
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
-}
 
+}

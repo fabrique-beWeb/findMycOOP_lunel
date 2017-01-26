@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Post
@@ -10,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
-class Post
-{
+class Post {
+
     /**
      * @var int
      *
@@ -23,46 +25,46 @@ class Post
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="theme", type="string", length=255)
+     * @ManyToOne(targetEntity="Theme")
+     * @JoinColumn(name="fk_theme", referencedColumnName="id")
      */
     private $theme;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="post", type="string", length=255)
+     * @ManyToOne(targetEntity="Post")
+     * @JoinColumn(name="fk_post", referencedColumnName="id")
      */
     private $post;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="user", type="string", length=255)
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="fk_user", referencedColumnName="id")
      */
     private $user;
-   
+
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-    
+
     /**
      * @var string
      *
@@ -75,8 +77,7 @@ class Post
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -87,8 +88,7 @@ class Post
      *
      * @return Post
      */
-    public function setTheme($theme)
-    {
+    public function setTheme($theme) {
         $this->theme = $theme;
 
         return $this;
@@ -99,8 +99,7 @@ class Post
      *
      * @return string
      */
-    public function getTheme()
-    {
+    public function getTheme() {
         return $this->theme;
     }
 
@@ -111,8 +110,7 @@ class Post
      *
      * @return Post
      */
-    public function setPost($post)
-    {
+    public function setPost($post) {
         $this->post = $post;
 
         return $this;
@@ -123,8 +121,7 @@ class Post
      *
      * @return string
      */
-    public function getPost()
-    {
+    public function getPost() {
         return $this->post;
     }
 
@@ -135,8 +132,7 @@ class Post
      *
      * @return Post
      */
-    public function setUser($user)
-    {
+    public function setUser($user) {
         $this->user = $user;
 
         return $this;
@@ -150,7 +146,7 @@ class Post
     public function getUser() {
         return $this->user;
     }
-    
+
     function getTitle() {
         return $this->title;
     }
@@ -183,6 +179,4 @@ class Post
         $this->datetime = $datetime;
     }
 
-
 }
-

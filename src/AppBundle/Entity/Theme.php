@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Theme
@@ -10,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="theme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
  */
-class Theme
-{
+class Theme {
+
     /**
      * @var int
      *
@@ -23,8 +25,8 @@ class Theme
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="themeParent", type="string", length=255)
+     * @ManyToOne(targetEntity="Theme")
+     * @JoinColumn(name="fk_themeParent", referencedColumnName="id")
      */
     private $themeParent;
 
@@ -35,14 +37,12 @@ class Theme
      */
     private $title;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -53,8 +53,7 @@ class Theme
      *
      * @return Theme
      */
-    public function setThemeParent($themeParent)
-    {
+    public function setThemeParent($themeParent) {
         $this->themeParent = $themeParent;
 
         return $this;
@@ -65,8 +64,7 @@ class Theme
      *
      * @return string
      */
-    public function getThemeParent()
-    {
+    public function getThemeParent() {
         return $this->themeParent;
     }
 
@@ -77,8 +75,7 @@ class Theme
      *
      * @return Theme
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -89,9 +86,8 @@ class Theme
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
-}
 
+}
