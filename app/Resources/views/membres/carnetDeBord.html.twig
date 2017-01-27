@@ -1,5 +1,6 @@
 {% extends ':site:home.html.twig' %}
 {% block body %}
+    <div class="col-lg-offset-1 col-lg-6 section">
     <div>Cloche notif</div>
     <h2>Carnet de bord</h2>
     <div>
@@ -9,28 +10,14 @@
     </div>
     <section>
         <div>
-            <h3>Find my coop</h3>
-            <h4>Last activités</h4>
-            <p>B</p>
-            <p>DETAILS DU PROJET</p>
-            <a>Go to details</a>
-        </div>
-        <div>
-            <h3>BeWeB web site</h3>
-            <h4>Last activités</h4>
-            <p>B</p>
-            <p>DETAILS DU PROJET</p>
-            <a>Go to details</a>
-        </div>
-        <div>
-            <h3>Piz'Aioli</h3>
-            <h4>Last activités</h4>
-            <p>A</p>
-            <p>DETAILS DU PROJET</p>
-            <a>Go to details</a>
-        </div>
+            {% for post in posts %}
+            <h3>{{post.title}}</h3>
+            <h4 class="text-center">Last activités</h4>
+            <p class="text-justify">{{post.description}}</p>
+            <a href="{{path('detailsProjet')}}" class="col-lg-offset-9 col-lg-3">Go to details</a>
+            {% endfor %}
     </section>
-    <section>
+    <section class="hide">
         <div>
             <h3>from: UserFriendly</h3>
             <h4>object: Tu as fini quand ?</h4>
@@ -53,7 +40,7 @@
             <a>Answer</a>
         </div>
     </section>
-    <section>
+    <section class="hide">
         <div>
             <h4>Profil:</h4>
             <p>nom</p>
@@ -98,4 +85,5 @@
             <p>new</p>
         </div>
     </section>
+    </div>
 {% endblock %}
