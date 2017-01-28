@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * Mail
@@ -10,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="mail")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MailRepository")
  */
-class Mail
-{
+class Mail {
+
     /**
      * @var int
      *
@@ -23,15 +25,15 @@ class Mail
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="author", referencedColumnName="id")
      */
     private $author;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="receiver", type="string", length=255)
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="receiver", referencedColumnName="id")
      */
     private $receiver;
 
@@ -50,6 +52,21 @@ class Mail
     private $post;
 
     /**
+     * @var string
+     * @ManyToOne(targetEntity="Mail")
+     * @JoinColumn(name="fk_mail", referencedColumnName="id")
+     */
+    private $postParent;
+
+    function getPostParent() {
+        return $this->postParent;
+    }
+
+    function setPostParent($postParent) {
+        $this->postParent = $postParent;
+    }
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="seen", type="boolean")
@@ -63,14 +80,12 @@ class Mail
      */
     private $datetime;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -81,8 +96,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setAuthor($author)
-    {
+    public function setAuthor($author) {
         $this->author = $author;
 
         return $this;
@@ -93,8 +107,7 @@ class Mail
      *
      * @return string
      */
-    public function getAuthor()
-    {
+    public function getAuthor() {
         return $this->author;
     }
 
@@ -105,8 +118,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setReceiver($receiver)
-    {
+    public function setReceiver($receiver) {
         $this->receiver = $receiver;
 
         return $this;
@@ -117,8 +129,7 @@ class Mail
      *
      * @return string
      */
-    public function getReceiver()
-    {
+    public function getReceiver() {
         return $this->receiver;
     }
 
@@ -129,8 +140,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setSubject($subject)
-    {
+    public function setSubject($subject) {
         $this->subject = $subject;
 
         return $this;
@@ -141,8 +151,7 @@ class Mail
      *
      * @return string
      */
-    public function getSubject()
-    {
+    public function getSubject() {
         return $this->subject;
     }
 
@@ -153,8 +162,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setPost($post)
-    {
+    public function setPost($post) {
         $this->post = $post;
 
         return $this;
@@ -165,8 +173,7 @@ class Mail
      *
      * @return string
      */
-    public function getPost()
-    {
+    public function getPost() {
         return $this->post;
     }
 
@@ -177,8 +184,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setSeen($seen)
-    {
+    public function setSeen($seen) {
         $this->seen = $seen;
 
         return $this;
@@ -189,8 +195,7 @@ class Mail
      *
      * @return bool
      */
-    public function getSeen()
-    {
+    public function getSeen() {
         return $this->seen;
     }
 
@@ -201,8 +206,7 @@ class Mail
      *
      * @return Mail
      */
-    public function setDatetime($datetime)
-    {
+    public function setDatetime($datetime) {
         $this->datetime = $datetime;
 
         return $this;
@@ -213,9 +217,7 @@ class Mail
      *
      * @return string
      */
-    public function getDatetime()
-    {
+    public function getDatetime() {
         return $this->datetime;
     }
 }
-
