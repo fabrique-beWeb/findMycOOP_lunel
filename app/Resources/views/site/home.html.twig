@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Find My cOOp !{% endblock %}</title>
+        <title>{% block title %}Find My cOOp{% endblock %}</title>
         {% block stylesheet %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" />
@@ -10,7 +10,7 @@
         {% endblock %}
     </head>
     <body>
-        <header class="text-center">
+        <header class="text-center"> 
             <img src="{{ asset('image/logo.png') }}"/>
         </header>
         {% block nav %}
@@ -30,44 +30,40 @@
                 </div>
             </div>
         {% endblock %}
-        <div class="container-fluid">
-            <div class="row">
-
-                {% block body %}
-                    <section class="col-lg-offset-1 col-lg-6 ">
-                        <div class="section">
-                            <h2 class="text-center">Presentation</h2>
-                            {% for presentation in description %}
-                                <p>{{presentation.description}}</p>
-                            {% endfor %}
+        <div class="container">
+            {% block body %}
+                <section>
+                    <div class="col-lg-8 section">
+                        <h2 class="text-center">Presentation</h2>
+                        {% for presentation in description %}
+                            <p>{{presentation.description}}</p>
+                        {% endfor %}
+                    </div>
+                    <p class='col-lg-offset-8'><a href="{{path('contact')}}">Contactez nous</a></p>
+                </section>
+            {% endblock %}
+            {% block activités %}
+                <section class="evenements fix">
+                    <div {#class="container"#}>
+                        <div class="col-lg-offset-1 col-lg-3 ">
+                            <a class="col-lg-offset-10" href="{{path('login')}}">login</a>
+                            <h2 class="text-center">Activités</h2>
+                            {% for activity in activities %}
+                                <div class="section">
+                                    <p>{{activity.datetime}}</p>
+                                    <h3 class="text-center">{{activity.title}}</h3>
+                                    <p class="text-justify">{{activity.description}}</p>
+                                    <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
+                                </div>
+                            {% endfor %} 
+                            <a class="col-lg-offset-6 text-center" href="" >&Congruent;</a>
                         </div>
-                        <p class='col-lg-offset-10'><a href="{{path('contact')}}">Contactez nous</a></p>
-                    </section>
-                {% endblock %}
-
-                {% block activités %}
-                    <section class="evenements">
-                        <div class="container">
-                            <div class="col-lg-offset-1 col-lg-3 ">
-                                <a class="col-lg-offset-10" href="{{path('login')}}">login</a>
-                                <h2 class="text-center">Activités</h2>
-                                {% for activity in activities %}
-                                    <div class="section">
-                                        <p>{{activity.datetime}}</p>
-                                        <h3 class="text-center">{{activity.title}}</h3>
-                                        <p class="text-justify">{{activity.description}}</p>
-                                        <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
-                                    </div>
-                                {% endfor %} 
-                                <a class="col-lg-offset-6 text-center" href="" >&Congruent;</a>
-                            </div>
-                        </div>
-                    </section>
-                {% endblock %}
-            </div>
+                    </div>
+                </section>
+            {% endblock %}
         </div>
         <footer class="text-center">
-            <p>&COPY;Copyright by BeWeb.</p>
+            <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
         </footer>
     </body>
 </html>

@@ -1,0 +1,47 @@
+.bell{
+    border: 1px solid darkslategray;
+    background-color: darkslategray;
+    border-radius: 50%;
+    height:50px;
+    width:50px;
+    text-align: center;
+    margin-top:-4.5em;
+    margin-left: -4.5em;
+}
+
+.bells{
+    margin-top: 6px;
+}
+
+.a{
+    margin-left: 10px;
+
+
+}
+.carnet{
+    position: absolute;
+    buttom: -1em;
+    
+}
+.carnet p{
+        background-color: red;
+}
+
+.profil p{
+    border: 1px solid black;
+    background-color: white;
+    padding: 0.5em;
+    margin: 1em;
+}
+
+.profil-img{
+    border: 1px solid black;
+    background-color: white;
+  
+}
+.projet{
+    
+    height: 10em;
+/*    width: 10em;*/
+    overflow-y: scroll;
+}

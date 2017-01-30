@@ -1,89 +1,114 @@
 {% extends ':site:home.html.twig' %}
 {% block body %}
-    <div class="col-lg-offset-1 col-lg-6 section">
-    <div>Cloche notif</div>
-    <h2>Carnet de bord</h2>
-    <div>
-        <p>My projects</p>
-        <p>My messages</p>
-        <p>My settings</p>
-    </div>
-    <section>
-        <div>
-            {% for post in posts %}
-            <h3>{{post.title}}</h3>
-            <h4 class="text-center">Last activités</h4>
-            <p class="text-justify">{{post.description}}</p>
-            <a href="{{path('detailsProjet')}}" class="col-lg-offset-9 col-lg-3">Go to details</a>
-            {% endfor %}
-    </section>
-    <section class="hide">
-        <div>
-            <h3>from: UserFriendly</h3>
-            <h4>object: Tu as fini quand ?</h4>
-            <p>R (R = non lu)</p>
-            <p>Contenu du message</p>
-            <a>Answer</a>
+    <div class="col-lg-8 section">
+        <div class="bell">
+            <img class="bells" src="{{ asset('image/bell2.png') }}"/>
         </div>
-        <div>
-            <h3>from: AnotherUser</h3>
-            <h4>object: Rejoindre la résistance</h4>
-            <p>R (R = non lu)</p>
-            <p>Contenu du message</p>
-            <a>Answer</a>
+        <h2 class="text-center">Carnet de bord</h2>
+        <div class="carnet col-lg-offset-11 col-lg-2">
+            <p>My projects</p>
+            <p class="a">My messages</p>
+            <p class="a">My settings</p>
         </div>
-        <div>
-            <h3>from: UserFriendly</h3>
-            <h4>object: Tu as fini quand ?</h4>
-            <p>NON R (non R = lu)</p>
-            <p>Contenu du message</p>
-            <a>Answer</a>
-        </div>
-    </section>
-    <section class="hide">
-        <div>
-            <h4>Profil:</h4>
-            <p>nom</p>
-            <p>prenom</p>
-            <p>pseudo</p>
-            <img>fk_image</img>
-            <a>changer le mot de passe</a>
-            <p>adresse</p>
-            <p>ville</p>
-            <a>url site web</a>
-            <p>edit</p>
-            <p>Update</p>
-        </div>
-        <div>
-            <h4>Projects:</h4>
-            <ul>
-                 <li>
-                    <p>bla bla bla bla bla</p>
-                    <a>edit</a> 
-                    <a>quit</a>
-                    <p>boss</p>
-                </li>
-                 <li>
-                    <p>bla bla bla bla bla</p>
-                    <a>edit</a> 
-                    <a>quit</a>
-                    <p>coll</p>
-                </li>
-                <li>
-                    <p>bla bla bla bla bla</p>
-                    <a>edit</a> 
-                    <a>quit</a>
-                    <p>coll</p>
-                </li>
-                 <li>
-                    <p>bla bla bla bla bla</p>
-                    <a>edit</a> 
-                    <a>quit</a>
-                    <p>coll</p>
-                </li>
-            </ul>
-            <p>new</p>
-        </div>
-    </section>
+        <section class="hide">
+            <div>
+                {% for post in posts %}
+                    <h3>{{post.title}}</h3>
+                    <h4 class="text-center">Last activités</h4>
+                    <p class="text-justify">{{post.description}}</p>
+                    <a href="{{path('detailsProjet')}}" class="col-lg-offset-9 col-lg-3">Go to details</a>
+                {% endfor %}
+        </section>
+        <section class="hide">
+            <div>
+                <h3>from: UserFriendly</h3>
+                <h4>object: Tu as fini quand ?</h4>
+                <p>R (R = non lu)</p>
+                <p>Contenu du message</p>
+                <a>Answer</a>
+            </div>
+            <div>
+                <h3>from: AnotherUser</h3>
+                <h4>object: Rejoindre la résistance</h4>
+                <p>R (R = non lu)</p>
+                <p>Contenu du message</p>
+                <a>Answer</a>
+            </div>
+            <div>
+                <h3>from: UserFriendly</h3>
+                <h4>object: Tu as fini quand ?</h4>
+                <p>NON R (non R = lu)</p>
+                <p>Contenu du message</p>
+                <a>Answer</a>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h4>Profil:</h4>
+                <div class="col-lg-6 profil">
+                    <p>nom</p>
+                    <p>prenom</p>
+                    <p>pseudo</p>
+                    <a>changer le mot de passe</a>
+                    <p>adresse</p>
+                    <p>ville</p>
+                    <a>url site web</a>
+                    <button>edit</button>
+                    <button>Update</button>
+                </div>
+                <img class="profil-img col-lg-offset-2 col-lg-4"atl="fk_image" src="http://icon-icons.com/icons2/877/PNG/128/male-profile-picture_icon-icons.com_68388.png">
+            </div>
+            <div class="col-lg-12 ">
+                <h4>Projects:</h4>
+                            <div class="col-lg-12 projet">
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+                <div>
+                    <p class="col-lg-6" >bla bla bla bla bla</p>
+                    <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                    <a class="col-lg-offset-1 col-lg-1">quit</a>
+                    <p class="col-lg-offset-1 col-lg-1">boss</p>
+                </div>
+  
+   
+                </div>
+                <button>new</button>
+            </div>
+            
+        </section>
     </div>
 {% endblock %}
