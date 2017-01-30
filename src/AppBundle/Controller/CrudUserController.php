@@ -78,4 +78,28 @@ class CrudUserController extends Controller {
         ));
     }
 
+    /**
+     * @Route("/User", name="user")
+     */
+    public function getAddUser() {
+        $formUser = $this->createForm(UserType::class);
+        return $this->render(':membres:addUser.html.twig', array('formUser' => $formUser->createView()));
+    }
+
+    /**
+     * @Route("/userValid", name="vaildUser")
+     */
+    public function getValidUser(Request $r) {
+        $u = new User();
+        $formUser = $this->createForm(UserType::class, $u);
+        if ($r->getMethod() == 'POST') {
+            $formUser->handleRequest($r);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($u);
+            $em->flush();
+            return $this->redirectToRoute(':site:login.html.twig');
+        }
+        return $this->redirectToRoute(':membres:addUser.html.twig', array('formUser' => $formUser->createView()));
+    }
+
 }
