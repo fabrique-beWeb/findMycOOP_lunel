@@ -1,0 +1,31 @@
+.section
+{
+    border: 1px solid black;
+    background-color: $secondColor;
+    padding: 0.8em;
+    padding-top: 6.5em;
+    margin-top:1em;
+    
+}
+
+body
+{
+    font-family: "Comic Sans MS", Times, serif;
+}
+.login
+{
+    width:33%;
+}
+.login p
+{
+    border:$border;
+    background-color: white;
+    padding: 0.5em;
+    margin: 1em;
+}
+.login a
+{
+    float: right;
+    text-decoration: none;
+    padding-bottom: -15px;
+}

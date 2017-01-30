@@ -1,0 +1,18 @@
+{% extends ':site:home.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="col-lg-offset-1 col-lg-6">
+            {% if id is defined %}
+                {{form_start(formTheme,{'attr':{'action':path('validTheme',{'id':id})}})}}
+                <input type="submit" value="Editer">
+            {% else%}
+                {{form_start(formTheme,{'attr':{'action':path('addTheme')}})}}
+                {{form_widget(formTheme.title, {'attr':{'placeholder':'theme'}})}}
+                <input type="submit" value="Ajouter">
+            {%endif%}
+            {{form_end(formTheme)}}
+        </div>
+    </section>
+
+{% endblock %}
