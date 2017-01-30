@@ -89,5 +89,8 @@ class Theme {
     public function getTitle() {
         return $this->title;
     }
+    public function __toString() {
+        return $this->getTitle();
+    }
 
 }
