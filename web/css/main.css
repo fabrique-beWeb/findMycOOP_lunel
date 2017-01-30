@@ -1,0 +1,82 @@
+.section {
+  border: 1px solid black;
+  background-color: lightblue;
+  padding: 0.8em;
+  padding: 3em;
+  margin-top: 1em; }
+
+body {
+  font-family: cursive;
+  background-color: #bdcabd; }
+
+.login {
+  width: 33%; }
+
+.login p {
+  border: 1px solid black;
+  background-color: white;
+  padding: 0.5em;
+  margin: 1em; }
+
+.login a {
+  float: right;
+  text-decoration: none;
+  padding-bottom: -15px; }
+
+header {
+  margin: 1.5em; }
+
+footer {
+  position: fixed buttom;
+  background-color: black;
+  color: gray;
+  border-top: 1px solid black;
+  margin-top: 2.2em;
+  padding: 0.5em; }
+
+.evenements div div div {
+  padding: 0.5em;
+  margin: 0.8em;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+  background-color: #FEFF68; }
+
+.evenements div div {
+  margin-top: 1em;
+  margin-right: -15px;
+  border: 1.5px solid black;
+  background-color: lightblue; }
+
+h2 {
+  font-size: 2vw;
+  margin: 1em;
+  /*margin-top: 1em;*/ }
+
+h3 {
+  font-size: 2em; }
+
+.evenements div div a:first-child {
+  text-decoration: none;
+  background-color: darkslategrey;
+  position: absolute;
+  padding: 0.3em;
+  margin-top: -12px;
+  margin-left: 220px;
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.6s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+:hover span {
+  padding-right: 13px; }
+
+.evenements div div a:hover {
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);*/ }
+
+.evenements div div a:nth-child(n+2) {
+  text-decoration: none;
+  width: 30%;
+  text-align: center; }
+
+/*# sourceMappingURL=main.css.map */
