@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 /**
  * User
@@ -10,8 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
-{
+class User implements UserInterface, \Serializable {
     /**
      * @var int
      *
@@ -47,7 +48,7 @@ class User
      *
      * @ORM\Column(name="passWord", type="string", length=255)
      */
-    private $passWord;
+    private $password;
 
     /**
      * @var string
@@ -98,14 +99,27 @@ class User
      */
     private $boss;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="role", type="array")
+     */
+    private $role;
+
+    function getRole() {
+        return $this->role;
+    }
+
+    function setRole($role) {
+        $this->role = $role;
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -116,8 +130,7 @@ class User
      *
      * @return User
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -128,8 +141,7 @@ class User
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -140,8 +152,7 @@ class User
      *
      * @return User
      */
-    public function setFirstName($firstName)
-    {
+    public function setFirstName($firstName) {
         $this->firstName = $firstName;
 
         return $this;
@@ -152,8 +163,7 @@ class User
      *
      * @return string
      */
-    public function getFirstName()
-    {
+    public function getFirstName() {
         return $this->firstName;
     }
 
@@ -164,8 +174,7 @@ class User
      *
      * @return User
      */
-    public function setPseudo($pseudo)
-    {
+    public function setPseudo($pseudo) {
         $this->pseudo = $pseudo;
 
         return $this;
@@ -176,8 +185,7 @@ class User
      *
      * @return string
      */
-    public function getPseudo()
-    {
+    public function getPseudo() {
         return $this->pseudo;
     }
 
@@ -188,9 +196,8 @@ class User
      *
      * @return User
      */
-    public function setPassWord($passWord)
-    {
-        $this->passWord = $passWord;
+    public function setPassword($password) {
+        $this->password = $password;
 
         return $this;
     }
@@ -200,9 +207,8 @@ class User
      *
      * @return string
      */
-    public function getPassWord()
-    {
-        return $this->passWord;
+    public function getPassword() {
+        return $this->password;
     }
 
     /**
@@ -212,8 +218,7 @@ class User
      *
      * @return User
      */
-    public function setAddress($address)
-    {
+    public function setAddress($address) {
         $this->address = $address;
 
         return $this;
@@ -224,8 +229,7 @@ class User
      *
      * @return string
      */
-    public function getAddress()
-    {
+    public function getAddress() {
         return $this->address;
     }
 
@@ -236,8 +240,7 @@ class User
      *
      * @return User
      */
-    public function setCity($city)
-    {
+    public function setCity($city) {
         $this->city = $city;
 
         return $this;
@@ -248,8 +251,7 @@ class User
      *
      * @return string
      */
-    public function getCity()
-    {
+    public function getCity() {
         return $this->city;
     }
 
@@ -260,8 +262,7 @@ class User
      *
      * @return User
      */
-    public function setUrl($url)
-    {
+    public function setUrl($url) {
         $this->url = $url;
 
         return $this;
@@ -272,8 +273,7 @@ class User
      *
      * @return string
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 
@@ -284,8 +284,7 @@ class User
      *
      * @return User
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
 
         return $this;
@@ -296,8 +295,7 @@ class User
      *
      * @return string
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
 
@@ -308,8 +306,7 @@ class User
      *
      * @return User
      */
-    public function setPostalCode($postalCode)
-    {
+    public function setPostalCode($postalCode) {
         $this->postalCode = $postalCode;
 
         return $this;
@@ -320,8 +317,7 @@ class User
      *
      * @return int
      */
-    public function getPostalCode()
-    {
+    public function getPostalCode() {
         return $this->postalCode;
     }
 
@@ -332,8 +328,7 @@ class User
      *
      * @return User
      */
-    public function setPosts($posts)
-    {
+    public function setPosts($posts) {
         $this->posts = $posts;
 
         return $this;
@@ -344,8 +339,7 @@ class User
      *
      * @return array
      */
-    public function getPosts()
-    {
+    public function getPosts() {
         return $this->posts;
     }
 
@@ -356,8 +350,7 @@ class User
      *
      * @return User
      */
-    public function setBoss($boss)
-    {
+    public function setBoss($boss) {
         $this->boss = $boss;
 
         return $this;
@@ -368,9 +361,42 @@ class User
      *
      * @return array
      */
-    public function getBoss()
-    {
+    public function getBoss() {
         return $this->boss;
     }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return $this->role;
+    }
+
+    public function getSalt() {
+//        return $this->mail;
+    }
+
+
+    public function getUsername(){
+        return $this->pseudo;
+    }
+
+    public function serialize(){
+        return serialize(array(
+            $this->id,
+            $this->name,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized){
+        list(
+                $this->id,
+                $this->name,
+                $this->password,
+                ) = unserialize($serialized);
+    }
+    
 }
 
