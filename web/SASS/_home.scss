@@ -13,20 +13,27 @@ body
     font-family: cursive;
     background-color: $firstColor  ;
 }
-.login
-{
-    width:33%;
+
+.trio{
+    position: absolute;
+    margin-left: -185px ;
+    margin-top: -45px;
+    z-index: -1;
 }
-.login p
-{
-    border:$border;
+.trio li{
     background-color: white;
-    padding: 0.5em;
-    margin: 1em;
+    list-style-type: none;
+    border: solid #000 1px; 
+    margin: 4px;
+    padding: 2px;
+    padding-right: 25px;
+    margin-left: 20px;
 }
-.login a
-{
-    float: right;
-    text-decoration: none;
-    padding-bottom: -15px;
+#profil{
+    margin-left: 0;
+}
+
+.nous a {
+    color: black;
+    font-size: 17px;
 }

@@ -1,3 +1,12 @@
+function refrech() {
+    $(".loading").hide();
+    $(".contact").show();
+    $(".email").val("");
+    $(".sujet").val("inscrption");
+    $(".message").val("");
+    $(".confirmation").val("");
+}
+
 $(document).ready(function () {
     $(".loading").hide();
     $(".button").click(function () {
@@ -27,11 +36,15 @@ $(document).ready(function () {
     });
 });
 
-function refrech() {
-    $(".loading").hide();
-    $(".contact").show();
-    $(".email").val("");
-    $(".sujet").val("inscrption");
-    $(".message").val("");
-    $(".confirmation").val("");
-}
+var positionBase;
+
+$(window).load(function () {
+    positionBase = $(".evenements").position().top;
+});
+$(window).scroll(function () {
+    var newPosition = positionBase - $("body").scrollTop();
+    if ($("body").scrollTop() < $("nav").height()) {
+        $(".evenements").css({top: newPosition + "px"})
+    }
+
+});

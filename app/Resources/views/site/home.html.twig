@@ -11,6 +11,9 @@
     </head>
     <body>
         <header class="text-center"> 
+            {% if is_granted("ROLE_MEMBRES")%}
+                <a href="{{path('carnetdebord')}}">{{app.user.pseudo}}</a>
+            {% endif %}
             <img src="{{ asset('image/logo.png') }}"/>
         </header>
         {% block nav %}
@@ -39,19 +42,32 @@
                             <p>{{presentation.description}}</p>
                         {% endfor %}
                     </div>
-                    <p class='col-lg-offset-8'><a href="{{path('contact')}}">Contactez nous</a></p>
+                    <div class="col-lg-8 text-center nous">
+                        <a class="" href="{{path('contact')}}">Contactez nous</a>
+                    </div>
                 </section>
             {% endblock %}
             {% block activités %}
-                <section class="evenements fix">
-                    <div {#class="container"#}>
-                        <div class="col-lg-offset-1 col-lg-3 ">
-                            <a class="col-lg-offset-10" href="{{path('login')}}">login</a>
-                            <h2 class="text-center">Activités</h2>
+                <section class="evenements">
+                    <div>
+                        <div class="col-lg-offset-8 col-lg-3 ">
+                            {% if is_granted("ROLE_MEMBRES")%}
+                                <a class="col-lg-offset-10" href="{{path('loginOut')}}">logout</a>
+                            {% else %}
+                                <a class="col-lg-offset-10" href="{{path('login')}}">login</a>
+                            {% endif %}
+                            <h2 class="text-center ">Activités</h2>
+                            {% if is_granted("ROLE_MEMBRES")%}
+                               <ul class="trio">
+                                <li id="projet">Mes projets</li>
+                                <li id="message">Mes messages</li>
+                                <li id="profil">Mon profil</li>
+                            </ul>
+                            {% endif %}
                             {% for activity in activities %}
                                 <div class="section">
                                     <p>{{activity.datetime}}</p>
-                                    <h3 class="text-center">{{activity.title}}</h3>
+                                    <h4 class="text-center">{{activity.title}}</h4>
                                     <p class="text-justify">{{activity.description}}</p>
                                     <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
                                 </div>
@@ -65,5 +81,8 @@
         <footer class="text-center">
             <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
         </footer>
+        <script src="{{asset('scripts/jQuery.js')}}"></script>
+        <script src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
+        <script src="{{asset('scripts/main.js')}}"></script>
     </body>
 </html>
