@@ -9,7 +9,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Theme;
+use AppBundle\Entity\User;
 use AppBundle\Form\ThemeType;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 class CrudUserController extends Controller {
 
     /**
-     * @Route("/theme", name="theme")
+     * @Route("/Membres/theme", name="theme")
      */
     public function getAddTheme() {
 //        $em = $this->getDoctrine()->getManager();
@@ -32,7 +34,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/themeValid", name="addTheme")
+     * @Route("/Membres/themeValid", name="addTheme")
      */
     public function getValidTheme(Request $r) {
         $t = new Theme();
@@ -53,7 +55,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/themeValid/{id}", name="validTheme")
+     * @Route("/Membres/themeValid/{id}", name="validTheme")
      */
     public function getEditTheme(Request $r, $id) {
         $em = $this->getDoctrine()->getManager();
@@ -95,11 +97,13 @@ class CrudUserController extends Controller {
         if ($r->getMethod() == 'POST') {
             $formUser->handleRequest($r);
             $em = $this->getDoctrine()->getManager();
+            $u->setRole(array("ROLE_MEMBRES"));
+            $u->setBoss(array());
+            $u->setPosts(array());
             $em->persist($u);
             $em->flush();
-            return $this->redirectToRoute(':site:login.html.twig');
+            return $this->redirectToRoute('login');
         }
-        return $this->redirectToRoute(':membres:addUser.html.twig', array('formUser' => $formUser->createView()));
+        return $this->redirectToRoute('user', array('formUser' => $formUser->createView()));
     }
-
 }
