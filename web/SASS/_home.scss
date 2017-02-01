@@ -1,39 +1,30 @@
-.section
-{
+.section{
     border: $border;
     background-color: $secondColor;
     padding: 0.8em;
     padding: 3em;
-    margin-top:1em;
-    
+    margin-top:1em;   
+    box-shadow: 1px 2px 10px;
 }
 
-body
-{
-    font-family: cursive;
+body{
+
     background-color: $firstColor  ;
-}
-
-.trio{
-    position: absolute;
-    margin-left: -185px ;
-    margin-top: -45px;
-    z-index: -1;
-}
-.trio li{
-    background-color: white;
-    list-style-type: none;
-    border: solid #000 1px; 
-    margin: 4px;
-    padding: 2px;
-    padding-right: 25px;
-    margin-left: 20px;
-}
-#profil{
-    margin-left: 0;
 }
 
 .nous a {
     color: black;
+    text-shadow: 0px 0px 20px white;
     font-size: 17px;
+}
+/*.contacter{
+    position: absolute;
+    margin-top: 100px;
+    padding-left: -55px;
+}*/
+
+header a {
+    color:black;
+    font-size: 20px;
+    margin: 125px;
 }

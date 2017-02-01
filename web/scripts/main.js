@@ -30,12 +30,6 @@ $(document).ready(function () {
                 alert("sqb");
             }
 
-        });
-
-//        console.log(mail, message, subject);
-    });
-});
-
 var positionBase;
 
 $(window).load(function () {
@@ -44,7 +38,7 @@ $(window).load(function () {
 $(window).scroll(function () {
     var newPosition = positionBase - $("body").scrollTop();
     if ($("body").scrollTop() < $("nav").height()) {
-        $(".evenements").css({top: newPosition + "px"})
+        $(".evenements").css({top: newPosition + "px"});
     }
 
 });

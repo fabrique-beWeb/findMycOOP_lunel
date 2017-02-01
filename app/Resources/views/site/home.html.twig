@@ -10,11 +10,13 @@
         {% endblock %}
     </head>
     <body>
-        <header class="text-center"> 
+        <header> 
             {% if is_granted("ROLE_MEMBRES")%}
                 <a href="{{path('carnetdebord')}}">{{app.user.pseudo}}</a>
             {% endif %}
-            <img src="{{ asset('image/logo.png') }}"/>
+            <div class="text-center">
+                <img src="{{ asset('image/logo.png') }}"/>
+            </div>
         </header>
         {% block nav %}
             <div class="container-fluid">
@@ -36,21 +38,21 @@
         <div class="container">
             {% block body %}
                 <section>
-                    <div class="col-lg-8 section">
+                    <div class="col-lg-8 section ">
                         <h2 class="text-center">Presentation</h2>
                         {% for presentation in description %}
                             <p>{{presentation.description}}</p>
                         {% endfor %}
                     </div>
                     <div class="col-lg-8 text-center nous">
-                        <a class="" href="{{path('contact')}}">Contactez nous</a>
+                        <a class="contacter" href="{{path('contact')}}">Contactez nous</a>
                     </div>
                 </section>
             {% endblock %}
             {% block activités %}
-                <section class="evenements">
+                <section class="evenements container">
                     <div>
-                        <div class="col-lg-offset-8 col-lg-3 ">
+                        <div class="col-lg-offset-9 col-lg-3 ">
                             {% if is_granted("ROLE_MEMBRES")%}
                                 <a class="col-lg-offset-10" href="{{path('loginOut')}}">logout</a>
                             {% else %}
@@ -58,15 +60,15 @@
                             {% endif %}
                             <h2 class="text-center ">Activités</h2>
                             {% if is_granted("ROLE_MEMBRES")%}
-                               <ul class="trio">
-                                <li id="projet">Mes projets</li>
-                                <li id="message">Mes messages</li>
-                                <li id="profil">Mon profil</li>
-                            </ul>
+                                <ul class="trio">
+                                    <li id="projet">Mes projets</li>
+                                    <li id="message">Mes messages</li>
+                                    <li id="profil">Mon profil</li>
+                                </ul>
                             {% endif %}
                             {% for activity in activities %}
-                                <div class="section">
-                                    <p>{{activity.datetime}}</p>
+                                <div class="postit">
+                                    <p>{{activity.datetime|date('d/m/Y')}}</p>
                                     <h4 class="text-center">{{activity.title}}</h4>
                                     <p class="text-justify">{{activity.description}}</p>
                                     <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
