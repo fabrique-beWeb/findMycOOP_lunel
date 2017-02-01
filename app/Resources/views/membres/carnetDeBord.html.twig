@@ -1,21 +1,19 @@
 {% extends ':site:home.html.twig' %}
 {% block body %}
-    <div class="col-lg-8 section">
+    <div class="col-lg-8 section carnet">
         <div class="bell">
             <img class="bells" src="{{ asset('image/bell2.png') }}"/>
         </div>
         <h2 class="text-center">Carnet de bord</h2>
-        <section class="hide">
-            <div>
+        <section id="projet">
                 {% for post in posts %}
                     <h3>{{post.title}}</h3>
                     <h4 class="text-center">Last activités</h4>
                     <p class="text-justify">{{post.description}}</p>
                     <a href="{{path('detailsProjet')}}" class="col-lg-offset-9 col-lg-3">Go to details</a>
                 {% endfor %}
-            </div>
         </section>
-        <section class="hide">
+        <section id="message">
             <div>
                 <h3>from: UserFriendly</h3>
                 <h4>object: Tu as fini quand ?</h4>
@@ -38,28 +36,24 @@
                 <a>Answer</a>
             </div>
         </section>
-        <section>
+        <section id="profil">
             <div>
                 <h4>Profil:</h4>
-                <div class="col-lg-12 profil">
-                    <div class="col-lg-offset-1">
-                        <img class="profil-img col-lg-offset-6 col-lg-4"atl="fk_image" src="http://icon-icons.com/icons2/877/PNG/128/male-profile-picture_icon-icons.com_68388.png">
-                        <input class="col-lg-4"type="text" value="{{app.user.name}}"/>
-                        <input class="col-lg-4"type="text" value="{{app.user.firstName}}"/>
-                        <input class="col-lg-4"type="text" value="{{app.user.pseudo}}"/>
-                        <a href="">changer le mot de passe</a>
-                    </div>
-                    <input class="col-lg-4 col-lg-offset-6"type="text" value="{{app.user.city}}"/>
-                    <input class="col-lg-4 col-lg-offset-6"type="text" value="{{app.user.postalCode}}"/>
-                    <input class="col-lg-12"type="text" value="{{app.user.address}}"/>
-                    <a href="{{app.user.url}}">site web</a>
-                    <button class="col-lg-offset-6">edit</button>
-                    <button class="col-lg-offset-12">Update</button>
+                <div class="col-lg-6 profil">
+                    <p>nom</p>
+                    <p>prenom</p>
+                    <p>pseudo</p>
+                    <a href="">changer le mot de passe</a>
+                    <p>adresse</p>
+                    <p>ville</p>
+                    <a href="">site web</a>
+                    <button>edit</button>
+                    <button>Update</button>
                 </div>
-
+                <img class="profil-img col-lg-offset-2 col-lg-4"atl="fk_image" src="http://icon-icons.com/icons2/877/PNG/128/male-profile-picture_icon-icons.com_68388.png">
             </div>
-            <div class="col-lg-12 pro">
-                <h4>Projets:</h4>
+            <div class="col-lg-12 ">
+                <h4>Projects:</h4>
                 <div class="col-lg-12 projet">
                     <div>
                         <p class="col-lg-6" >bla bla bla bla bla</p>
@@ -106,6 +100,7 @@
                 </div>
                 <button class="col-lg-offset-11">new</button>
             </div>
+
         </section>
     </div>
 {% endblock %}
