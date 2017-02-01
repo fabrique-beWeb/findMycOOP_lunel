@@ -37,14 +37,24 @@ $(document).ready(function () {
 });
 
 var positionBase;
+var pageShow;
 
 $(window).load(function () {
     positionBase = $(".evenements").position().top;
+//    $("#projet").hide();
+    $(".carnet > section").hide();
+    pageShow = $(".carnet > section[id = projet]").show().css({marginLeft: 0+ "px"});
 });
 $(window).scroll(function () {
     var newPosition = positionBase - $("body").scrollTop();
     if ($("body").scrollTop() < $("nav").height()) {
-        $(".evenements").css({top: newPosition + "px"})
+        $(".evenements").css({top: newPosition + "px"});
     }
+});
 
+$(".trio > li").click(function () {
+    var id = $(this).attr("id");
+    pageShow.hide();
+    $(".carnet > section[id=" + id + "]").show();
+    pageShow = $(".carnet > section[id=" + id + "]");
 });
