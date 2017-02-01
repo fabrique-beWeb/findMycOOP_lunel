@@ -13,7 +13,9 @@ class ThemeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('themeParent')        ;
+        $builder->add('title')
+                ->add('themeParent')
+                ;
     }
     
     /**

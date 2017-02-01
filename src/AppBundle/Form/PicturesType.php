@@ -13,7 +13,11 @@ class PicturesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('url')->add('alt')->add('post')->add('user')        ;
+        $builder->add('url')
+                ->add('alt')
+                ->add('post')
+                ->add('user')
+                ;
     }
     
     /**

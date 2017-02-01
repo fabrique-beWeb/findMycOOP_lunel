@@ -13,7 +13,13 @@ class MailType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('author')->add('receiver')->add('subject')->add('post')->add('seen')->add('datetime')        ;
+        $builder->add('author')
+                ->add('receiver')
+                ->add('subject')
+                ->add('post')
+                ->add('seen')
+                ->add('datetime')
+                ;
     }
     
     /**
