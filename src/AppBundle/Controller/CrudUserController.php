@@ -8,8 +8,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Post;
 use AppBundle\Entity\Theme;
 use AppBundle\Entity\User;
+use AppBundle\Form\PostType;
 use AppBundle\Form\ThemeType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -105,5 +107,30 @@ class CrudUserController extends Controller {
             return $this->redirectToRoute('login');
         }
         return $this->redirectToRoute('user', array('formUser' => $formUser->createView()));
+    }
+        /**
+     * @Route("/Post", name="post")
+     */
+    public function getAddPost() {
+        $formPost = $this->createForm(PostType::class);
+        return $this->render(':membres:addPost.html.twig', array('formPost' => $formPost->createView()));
+    }
+
+    /**
+     * @Route("/postVaild", name="postVaild")
+     */
+    public function getValidPost(Request $r) {
+        $p = new Post;
+        $formPost = $this->createForm(PostType::class, $p);
+        if ($r->getMethod() == 'POST') {
+            $formPost->handleRequest($r);
+            $em = $this->getDoctrine()->getManager();
+            $p->setDatetime(time());
+            $p->setUser($this->getUser());
+            $em->persist($p);
+            $em->flush();
+            return $this->redirectToRoute('home');
+        }
+        return $this->redirectToRoute('post', array('formPost' => $formPost->createView()));
     }
 }
