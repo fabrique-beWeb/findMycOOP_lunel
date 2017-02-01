@@ -1,0 +1,13 @@
+{% extends ':site:home.html.twig' %}
+{% block body %}
+    <section>
+        <div class="col-lg-8 col-lg-offset-2 section">
+            <h2 class="text-center">Inscription</h2>
+            {{form_start(formPost,{'attr':{'action':path('postVaild')}})}}
+            <input type="submit" value="Creer"class="col-lg-8 col-lg-offset-2">
+            {{form_end(formPost)}}
+        </div>
+    </section>
+{% endblock %}
+{% block activités %}
+{% endblock %}
