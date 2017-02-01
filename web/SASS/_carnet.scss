@@ -18,14 +18,14 @@
 
 
 }
+
 .carnet{
     position: absolute;
     buttom: -1em;
     
 }
-.carnet p{
-        background-color: red;
-}
+
+
 
 .profil p{
     border: 1px solid black;
@@ -37,11 +37,19 @@
 .profil-img{
     border: 1px solid black;
     background-color: white;
-  
 }
-.projet{
-    
+
+.projet{ 
     height: 10em;
 /*    width: 10em;*/
     overflow-y: scroll;
+}
+
+.pro{
+    border-top: 1px solid black ;
+    border-bottom: 1px solid black ;
+}
+
+.pro div button{
+    margin-bottom: 100px;
 }

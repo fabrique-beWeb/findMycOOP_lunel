@@ -29,22 +29,19 @@ $(document).ready(function () {
                 $(".confirmation").append("Veuillez réessayer plus tard");
                 alert("sqb");
             }
-
         });
-
-//        console.log(mail, message, subject);
     });
 });
 
 var positionBase;
 var pageShow;
-
 $(window).load(function () {
     positionBase = $(".evenements").position().top;
 //    $("#projet").hide();
     $(".carnet > section").hide();
-    pageShow = $(".carnet > section[id = projet]").show().css({marginLeft: 0+ "px"});
+    pageShow = $(".carnet > section[id = projet]").show().css({marginLeft: 0 + "px"});
 });
+
 $(window).scroll(function () {
     var newPosition = positionBase - $("body").scrollTop();
     if ($("body").scrollTop() < $("nav").height()) {

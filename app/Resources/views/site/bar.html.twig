@@ -6,19 +6,19 @@
             <h2 class="text-center">Bar</h2>
             <section>
                 <p></p>
-                <input placeholder="Name, author,...">
-                <input type="submit" value="Find">
+                <input placeholder="Nom, auteur...">
+                <input type="submit" value="Recherche">
             </section>
             {% for theme in themes %}
                 {% if theme.themeParent is empty%}
                     <section class="section">
                         <h4>{{theme.title}}</h4>
-                        {#{% if theme.themeParent%}#}
+                        {% if theme.themeParent%}
                             <section class="section">
                                 <h4>{{theme.title}}</h4>
                                 <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
                             </section>
-                       {# {% endif %}#}
+                        {% endif %}
                         <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
                     </section>
                 {% endif %}
