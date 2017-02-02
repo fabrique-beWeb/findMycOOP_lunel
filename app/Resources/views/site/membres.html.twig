@@ -6,14 +6,10 @@
             <h2 class="text-center">Membres</h2>
             <div>
                 {% for membre  in membres %}
-                    <div class="{% if loop.index is divisible by(2) %}pull-right{% else %}pull-left{% endif %}">
-                        <img class="" src="http://icon-icons.com/icons2/877/PNG/128/male-profile-picture_icon-icons.com_68388.png" alt="">
-                    </div>
-                    <div class="container">
-                        <p>{{ membre.pseudo }}</p>
-                        <p>{{ membre.mail }}</p>
-                        <a href="{{ membre.url }}" target="_blanck">{{ membre.url }}</a>
-                    </div>
+                    <img class="pull-left" src="{{ asset('image/avatar1.png') }}"/>
+                    <p>{{ membre.pseudo }}</p>
+                    <p>{{ membre.mail }}</p>
+                    <p>{{ membre.url }}</p>
                 {% endfor %}
             </div>
     </section>
