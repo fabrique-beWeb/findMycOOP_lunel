@@ -16,7 +16,7 @@ $(document).ready(function () {
         var subject = $(".sujet").val();
         var message = $(".message").val();
         $.ajax({
-            url: "http://localhost/FindMyTest/web/app_dev.php/envoieMail",
+            url: "http://localhost/FindMyCoop/web/app_dev.php/envoieMail",
             data: {"mail": mail, "sujet": subject, "message": message},
             type: 'get',
             dataType: 'json',
@@ -37,7 +37,7 @@ var positionBase;
 var pageShow;
 var btnSelect;
 var url;
-var carnet = "http://localhost/FindMyTest/web/app_dev.php/carnet";
+var carnet = "http://localhost/FindMyCoop/web/app_dev.php/carnet";
 $(window).load(function () {
     positionBase = $(".evenements").position().top;
 //    $("#projet").hide();
@@ -61,7 +61,7 @@ $(window).scroll(function () {
 
 $(".trio > li").click(function () {
     if (url != carnet) {
-        window.location = "http://localhost/FindMyTest/web/app_dev.php/carnet";
+        window.location = "http://localhost/FindMyCoop/web/app_dev.php/carnet";
     }
     var id = $(this).attr("id");
     pageShow.hide();

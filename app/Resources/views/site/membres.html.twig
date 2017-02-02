@@ -2,14 +2,16 @@
 
 {% block body %}
     <section>
-        <div class="col-lg-8 , section">
+        <div class="col-lg-8 section">
             <h2 class="text-center">Membres</h2>
             <div>
                 {% for membre  in membres %}
-                    <img class="pull-left" src="{{ asset('image/avatar1.png') }}"/>
-                    <p>{{ membre.pseudo }}</p>
-                    <p>{{ membre.mail }}</p>
-                    <p>{{ membre.url }}</p>
+                    <img class="{% if loop.index is divisible by(2) %}pull-right{% else %}pull-left{% endif %}" src="{{ asset('image/avatar1.png') }}"/>
+                    <div class="container-fluid">
+                        <p>{{ membre.pseudo }}</p>
+                        <p>{{ membre.mail }}</p>
+                        <p>{{ membre.url }}</p>
+                    </div>
                 {% endfor %}
             </div>
     </section>

@@ -13,32 +13,22 @@
                     <h3>{{post.title}}</h3>
                     <h4 class="text-center">Last activités</h4>
                     <p class="text-justify">{{post.description}}</p>
-                    <button href="{{path('detailsProjet')}}" class="col-lg-offset-9 col-lg-3"/>Details
+                    <a href="{{path('forum',{'id':post.id })}}"><button class="col-lg-offset-9 col-lg-3">Details</button></a>
                 </div>
             {% endfor %}
         </section>
         <section id="message">
-            <div class="messages">
-                <h3>from: UserFriendly</h3>
-                <h4>object: Tu as fini quand ?</h4>
-                <p>R (R = non lu)</p>
-                <p>Contenu du message</p>
-                <button class="col-lg-offset-10">Repondre</button>
-            </div>
-            <div class="messages">
-                <h3>from: AnotherUser</h3>
-                <h4>object: Rejoindre la résistance</h4>
-                <p>R (R = non lu)</p>
-                <p>Contenu du message</p>
-                <button class="col-lg-offset-10">Repondre</button>
-            </div>
-            <div class="messages">
-                <h3>from: UserFriendly</h3>
-                <h4>object: Tu as fini quand ?</h4>
-                <p>R (R = non lu)</p>
-                <p>Contenu du message</p>
-                <button class="col-lg-offset-10">Repondre</button>
-            </div>
+            {% for mail in mails %}
+                <div>
+                    <h3>From: {{mail.author}}</h3>
+                    <h4>object: {{mail.subject}}</h4>
+{#                    {% if mail.seen is checked%}#}
+                        <p>R (R = non lu)</p>
+{#                    {% endif %}#}
+                    <p>{{mail.subject}}</p>
+                    <a href="{{path('forum',{'id':mail.id })}}"><button class="col-lg-offset-10">Repondre</button></a>
+                </div>
+            {% endfor %}
         </section>
         <section id="profil">
             <div>
