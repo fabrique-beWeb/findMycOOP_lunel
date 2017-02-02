@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="fmc_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable {
@@ -397,6 +397,9 @@ class User implements UserInterface, \Serializable {
                 $this->password,
                 ) = unserialize($serialized);
     }
-    
+    public function __toString() {
+        return $this->pseudo;
+    }
+
 }
 

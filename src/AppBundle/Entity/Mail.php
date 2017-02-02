@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 /**
  * Mail
  *
- * @ORM\Table(name="mail")
+ * @ORM\Table(name="fmc_mail")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MailRepository")
  */
 class Mail {
@@ -219,5 +219,8 @@ class Mail {
      */
     public function getDatetime() {
         return $this->datetime;
+    }
+    public function __toString() {
+        return $this->getSubject();
     }
 }

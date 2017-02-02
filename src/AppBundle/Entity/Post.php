@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 /**
  * Post
  *
- * @ORM\Table(name="post")
+ * @ORM\Table(name="fmc_post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
 class Post {

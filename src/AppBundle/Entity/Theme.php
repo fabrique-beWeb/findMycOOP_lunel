@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 /**
  * Theme
  *
- * @ORM\Table(name="theme")
+ * @ORM\Table(name="fmc_theme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
  */
 class Theme {

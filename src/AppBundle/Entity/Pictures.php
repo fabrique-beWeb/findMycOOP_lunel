@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 /**
  * Pictures
  *
- * @ORM\Table(name="pictures")
+ * @ORM\Table(name="fmc_pictures")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PicturesRepository")
  */
 class Pictures {
