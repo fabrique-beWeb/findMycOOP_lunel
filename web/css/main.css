@@ -1,0 +1,193 @@
+input {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+
+.section {
+  border: 0px solid black;
+  background-color: lightblue;
+  padding: 3em;
+  padding-top: 0.1em;
+  margin-top: 1em;
+  box-shadow: 1px 2px 10px; }
+
+body {
+  background-color: #2ecc71; }
+
+.nous {
+  margin: 25px 0;
+  margin-bottom: 60px; }
+
+.nous a {
+  color: black;
+  text-shadow: 0px 0px 20px white;
+  font-size: 20px; }
+
+header a {
+  color: black;
+  font-size: 20px;
+  margin: 125px; }
+
+.contact {
+  background-color: lightblue;
+  padding: 1px;
+  padding-bottom: 20px;
+  padding-left: 75px;
+  padding-right: 75px;
+  margin: 50px;
+  margin-right: 220px;
+  margin-left: 220px;
+  box-shadow: 1px 2px 10px; }
+
+header {
+  margin: 1.2em; }
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  background-color: black;
+  color: gray;
+  width: 100%;
+  z-index: 10000; }
+
+footer p {
+  margin-top: 6px; }
+
+.evenements div div div {
+  padding: 0.8em;
+  padding-top: 0.4em;
+  padding-bottom: 1.6em;
+  margin-left: -0.5em;
+  margin-right: -0.5em;
+  background-color: #FEFF68; }
+
+.evenements div div {
+  margin-top: 1em;
+  margin-right: -15px;
+  background-color: lightblue;
+  box-shadow: 1px 2px 10px; }
+
+h2 {
+  margin: 1em; }
+
+h3 {
+  font-size: 2em; }
+
+.evenements div div a:first-child {
+  text-decoration: none;
+  color: white;
+  background-color: darkslategrey;
+  position: absolute;
+  padding: 0.3em;
+  margin-top: -12px;
+  margin-left: 210px;
+  width: 17%;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.6s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+:hover span {
+  padding-right: 13px; }
+
+.evenements div div a:nth-child(n+2) {
+  text-decoration: none;
+  width: 30%;
+  text-align: center; }
+
+.evenements {
+  position: fixed;
+  z-index: 3;
+  height: 0px; }
+
+.trio {
+  position: absolute;
+  margin-left: -196px;
+  margin-top: -45px;
+  z-index: -1; }
+
+.trio li {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: darkslategrey;
+  color: white;
+  list-style-type: none;
+  margin: 4px;
+  padding: 2px;
+  padding-right: 40px;
+  margin-left: 20px;
+  padding-left: 8px;
+  cursor: pointer; }
+
+.bell {
+  background-color: darkslategray;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  position: absolute;
+  top: -1.7em;
+  left: -1.7em;
+  box-shadow: 1px 2px 10px; }
+
+.bells {
+  margin-top: 6px; }
+
+.a {
+  margin-left: 10px; }
+
+.carnet {
+  position: absolute;
+  buttom: -1em; }
+
+.profil p {
+  border: 1px solid black;
+  background-color: white;
+  padding: 0.5em;
+  margin: 1em; }
+
+.profil-img {
+  border: 1px solid white;
+  background-color: darkslategray; }
+
+.projet {
+  height: 10em;
+  overflow-y: scroll; }
+
+.pro {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.pro div button {
+  margin-bottom: 100px; }
+
+.cdbprojet {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black; }
+
+.h2 {
+  padding-top: -20px; }
+
+.last {
+  background-color: #FEFF68;
+  box-shadow: 1px 2px 10px;
+  padding: 1px;
+  padding-bottom: 34px;
+  margin: 15px;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.messages {
+  background-color: #FEFF68;
+  box-shadow: 1px 2px 10px;
+  padding: 30px;
+  padding-top: 5px;
+  padding-bottom: 30px;
+  margin: 15px;
+  margin-top: 20px; }
+
+.messages h4 {
+  text-align: center; }
+
+.messages button {
+  text-align: right; }
+
+/*# sourceMappingURL=main.css.map */

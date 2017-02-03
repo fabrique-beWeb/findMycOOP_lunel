@@ -1,0 +1,22 @@
+{% extends ':site:home.html.twig' %}
+{% block body %}
+    <section>
+        <div class="col-lg-8 col-lg-offset-2 section">
+            <h2 class="text-center">Inscription</h2>
+            {{form_start(formUser,{'attr':{'action':path('vaildUser')}})}}
+            {{form_widget(formUser.name,{'attr':{'placeholder':'Nom', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.firstName,{'attr':{'placeholder':'Prénom', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.pseudo,{'attr':{'placeholder':'Pseudo', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.passWord,{'attr':{'placeholder':'Password', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.address,{'attr':{'placeholder':'Adresse', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.city,{'attr':{'placeholder':'Ville', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.url,{'attr':{'placeholder':'Site', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.mail,{'attr':{'placeholder':'E-mail', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            {{form_widget(formUser.postalCode,{'attr':{'placeholder':'Code Postal', 'class':'col-lg-8 col-lg-offset-2'}})}}
+            <input type="submit" value="Creer"class="col-lg-8 col-lg-offset-2">
+                   {{form_end(formUser)}}
+        </div>
+    </section>
+{% endblock %}
+{% block activités %}
+{% endblock %}

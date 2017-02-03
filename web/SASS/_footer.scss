@@ -1,0 +1,11 @@
+footer{
+    position:fixed;
+    bottom:0px;
+    background-color: black;
+    color: gray;
+    width: 100%;    
+    z-index: 10000;
+}
+footer p {
+    margin-top: 6px;
+}

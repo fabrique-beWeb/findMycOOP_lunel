@@ -1,0 +1,17 @@
+{% extends ':site:home.html.twig' %}
+{% block nav %}{% endblock %}
+{% block body %}
+    <section>
+        <div class="col-lg-6 col-lg-offset-3 section">
+            <h2 class="text-center">Connection</h2>
+            <form action="{{path('loginCheck',{}) }}" method="post">
+                <input type="text" placeholder="Pseudo" name="_username" class="col-lg-6 col-lg-offset-3">
+                <input type="password" placeholder="Mot de pass" name="_password" class="col-lg-6 col-lg-offset-3">
+                <label class="col-lg-offset-3"><input type="checkbox">Se souvenir de moi</label>
+                <input type="submit" value="Login" class="col-lg-3 col-lg-offset-6">
+            </form>
+            <a class="col-lg-3 col-lg-offset-6 text-right" href="{{path('home')}}">Annuler</a>
+        </div>
+    </section>
+{% endblock %}
+{% block activités %}{% endblock %}
