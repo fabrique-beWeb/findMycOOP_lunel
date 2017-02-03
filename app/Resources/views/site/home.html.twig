@@ -5,7 +5,7 @@
         <title>{% block title %}Find My cOOp{% endblock %}</title>
         {% block stylesheet %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-            <link rel="stylesheet" href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('./vendor/bootstrap.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         {% endblock %}
     </head>
@@ -24,9 +24,6 @@
                             <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>
                             <li class="col-lg-3"><a href="{{path('membres')}}">Membres</a></li>
                             <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>
-                                {#<li><a href="{{path('forum')}}">forum</a></li>
-                                <li><a href="{{path('details')}}">details</a></li>
-                                <li><a href="{{path('carnetdebord')}}">CDB</a></li>#}
                         </ul>
                     </nav>
                 </div>
@@ -68,6 +65,7 @@
                                 <li id="profil">Mon profil</li>
                             </ul>
                         {% endif %}
+                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/up.png')}}"/></a>
                         {% for activity in activities %}
                             <div class="postit">
                                 <p>{{activity.datetime|date('d/m/Y')}}</p>
@@ -76,7 +74,7 @@
                                 <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
                             </div>
                         {% endfor %} 
-                        <a class="col-lg-offset-6 text-center" href="http://fabrique-beweb.com/"/><img class="text-center" src="{{asset('image/Barrow.png')}}"/></a>
+                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>
                     </div>
                 </div>
             </section>

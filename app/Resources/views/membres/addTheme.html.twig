@@ -1,8 +1,8 @@
 {% extends ':site:home.html.twig' %}
 
 {% block body %}
-    <section>
-        <div class="col-lg-offset-1 col-lg-6">
+    <section class="col-lg-offset-2 col-lg-4">
+        <div class="section theme">
             {% if id is defined %}
                 {{form_start(formTheme,{'attr':{'action':path('validTheme',{'id':id})}})}}
                 <input type="submit" value="Editer">

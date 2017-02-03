@@ -2,28 +2,30 @@
 
 {% block body %}
     <section>
-        <div class="col-lg-8 , section">
+        <div class="section col-lg-8">
             <h2 class="text-center">Bar</h2>
             <section>
                 <p></p>
-                <input placeholder="Nom, auteur...">
-                <input type="submit" value="Recherche">
+                <input class="col-lg-9"placeholder="Nom, auteur..."/>
+                <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
             </section>
-            {% for theme in themes %}
-                {% if theme.themeParent is empty%}
-                    <section class="section">
-                        <h4>{{theme.title}}</h4>
-                        {% if theme.themeParent%}
-                            <section class="section">
-                                <h4>{{theme.title}}</h4>
-                                <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
-                            </section>
-                        {% endif %}
-                        <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
-                    </section>
-                {% endif %}
-            {% endfor %}
-            <a href='{{path('theme')}}'>ajout thème</a>
+            <div class="col-lg-12" >
+                {% for theme in themes %}
+                    {% if theme.themeParent is empty%}
+                        <section class="section">
+                            <h4>{{theme.title}}</h4>
+                            {% if theme.themeParent%}
+                                <section class="section">
+                                    <h4>{{theme.title}}</h4>
+                                    <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
+                                </section>
+                            {% endif %}
+                            <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
+                        </section>
+                    {% endif %}
+                {% endfor %}
+                <a href='{{path('theme')}}'>ajout thème</a>
+            </div>
         </div>
     </section>
 {% endblock %}

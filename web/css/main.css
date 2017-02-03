@@ -2,19 +2,34 @@ input {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
+.mem {
+  background-color: #ECF0F1;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 1px 2px 10px; }
+
+.pull-left {
+  padding-top: 20px;
+  padding-left: 25px; }
+
+.pull-right {
+  padding-top: 20px;
+  padding-right: 25px; }
+
 .section {
   border: 0px solid black;
   background-color: lightblue;
   padding: 3em;
   padding-top: 0.1em;
   margin-top: 1em;
-  box-shadow: 1px 2px 10px; }
+  box-shadow: 1px 2px 10px;
+  margin-bottom: 75px; }
 
 body {
   background-color: #2ecc71; }
 
 .nous {
-  margin: 25px 0;
+  /*    margin: 25px 0;*/
   margin-bottom: 60px; }
 
 .nous a {
@@ -38,6 +53,9 @@ header a {
   margin-left: 220px;
   box-shadow: 1px 2px 10px; }
 
+.theme {
+  padding: 55px; }
+
 header {
   margin: 1.2em; }
 
@@ -56,6 +74,8 @@ footer p {
   padding: 0.8em;
   padding-top: 0.4em;
   padding-bottom: 1.6em;
+  margin-bottom: 3px;
+  margin-top: 3px;
   margin-left: -0.5em;
   margin-right: -0.5em;
   background-color: #FEFF68; }
@@ -117,6 +137,12 @@ h3 {
   padding-left: 8px;
   cursor: pointer; }
 
+.details {
+  background-color: #FEFF68;
+  box-shadow: 1px 2px 10px;
+  padding-bottom: 25px;
+  margin-top: 40px; }
+
 .bell {
   background-color: darkslategray;
   border-radius: 50%;
@@ -146,7 +172,9 @@ h3 {
 
 .profil-img {
   border: 1px solid white;
-  background-color: darkslategray; }
+  background-color: darkslategray;
+  margin-left: 100px;
+  padding: 10px; }
 
 .projet {
   height: 10em;
@@ -161,13 +189,14 @@ h3 {
 
 .cdbprojet {
   border-bottom: 1px solid black;
-  border-top: 1px solid black; }
+  border-top: 1px solid black;
+  margin-top: 10px; }
 
 .h2 {
   padding-top: -20px; }
 
 .last {
-  background-color: #FEFF68;
+  background-color: #ECF0F1;
   box-shadow: 1px 2px 10px;
   padding: 1px;
   padding-bottom: 34px;
@@ -188,6 +217,18 @@ h3 {
   text-align: center; }
 
 .messages button {
-  text-align: right; }
+  text-align: right;
+  margin-left: 515px; }
+
+.ijk {
+  width: 100%; }
+
+.droite {
+  margin-left: 122px; }
+
+.xyz {
+  margin-top: 10px;
+  margin-bottom: 17px;
+  margin-left: 591px; }
 
 /*# sourceMappingURL=main.css.map */

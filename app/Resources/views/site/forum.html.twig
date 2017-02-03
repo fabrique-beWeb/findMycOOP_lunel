@@ -1,14 +1,18 @@
 {% extends ':site:home.html.twig' %}
 {% block body %}
     <section>
-        <div class="col-lg-offset-1 col-lg-6 section">
-            <h4>Titre du post</h4>
+        <div class="col-lg-8 section ">
             <div>
-                <img>fk_image</img>
-                <p>auteur</p>
-            </div>
-            <div>
-                <p>TEXTE (datails du post)</p>
+                <div class="container-fluid details">
+                    <h3 class="text-center">Titre du post</h3>
+                    <div class="text-center col-lg-3">
+                        <p>auteur</p>
+                        <img src="{{ asset('image/avatar1.png') }}" alt=""/>
+                    </div>
+                    <div>
+                        <p>TEXTE (datails du post)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

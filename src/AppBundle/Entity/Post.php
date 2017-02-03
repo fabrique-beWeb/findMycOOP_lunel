@@ -178,5 +178,8 @@ class Post {
     function setDatetime($datetime) {
         $this->datetime = $datetime;
     }
+    public function __toString() {
+        return $this->getTitle();
+    }
 
 }
