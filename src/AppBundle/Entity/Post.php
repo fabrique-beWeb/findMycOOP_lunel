@@ -32,7 +32,7 @@ class Post {
 
     /**
      * @var string
-     * @ManyToOne(targetEntity="Post")
+     * @ManyToOne(targetEntity="Post",inversedBy="enfants")
      * @JoinColumn(name="fk_post", referencedColumnName="id")
      */
     private $post;
@@ -72,6 +72,17 @@ class Post {
      */
     private $datetime;
 
+    
+    /**
+     *
+     * @var array
+     * 
+     * @ORM\OneToMany(targetEntity="Post",mappedBy="post")
+     * 
+     */
+    private $enfants;
+    
+    
     /**
      * Get id
      *
@@ -93,8 +104,15 @@ class Post {
 
         return $this;
     }
+    function getEnfants() {
+        return $this->enfants;
+    }
 
-    /**
+    function setEnfants($enfants) {
+        $this->enfants = $enfants;
+    }
+
+        /**
      * Get theme
      *
      * @return string
@@ -177,6 +195,9 @@ class Post {
 
     function setDatetime($datetime) {
         $this->datetime = $datetime;
+    }
+    public function __toString() {
+        return $this->getTitle();
     }
 
 }

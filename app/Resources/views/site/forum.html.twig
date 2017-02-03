@@ -2,14 +2,18 @@
 {% block body %}
     <section>
         <div class="col-lg-offset-1 col-lg-6 section">
-            <h4>Titre du post</h4>
-            <div>
-                <img>fk_image</img>
-                <p>auteur</p>
+            {% for item in liste %}
+                {% if liste|length %}
+                <h4>bonjour : {{item.title}}</h4>
+                <div>
+                    <img>fk_image</img>
+                    <p>{{item.user.pseudo}}</p>
+                </div>
+                <div>
+                    <p>{{item.description}}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
             </div>
-            <div>
-                <p>TEXTE (datails du post)</p>
-            </div>
-        </div>
-    </section>
-{% endblock %}
+        </section>
+        {% endblock %}

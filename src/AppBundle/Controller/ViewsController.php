@@ -2,8 +2,11 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\Post;
+use AppBundle\Entity\Theme;
+use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ViewsController extends Controller {
 
@@ -53,7 +56,8 @@ class ViewsController extends Controller {
         return $this->render(':site:bar.html.twig', array(
                     'activities' => $activities,
                     'themes' => $themes,
-                    'posts' => $posts
+//                    'themes' => $this->getChild($this->getDoctrine()->getRepository(Theme::class)->findById(1), array()),
+                    'posts' => $posts,
         ));
     }
 
@@ -69,14 +73,18 @@ class ViewsController extends Controller {
      */
     public function getCarnetDeBordPage() {
         $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $u = $em->find('AppBundle:User', $this->getUser());
+        $formUser = $this->createForm(UserType::class, $u);
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
-        $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findAll();
-        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findByReceiver($this->getUser());
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByUser($this->getUser());
         return $this->render(':membres:carnetDeBord.html.twig', array(
                     'activities' => $activities,
                     'users' => $users,
                     'mails' => $mails,
-                    'posts' => $posts
+                    'posts' => $posts,
+                    'formUser' => $formUser
         ));
     }
 
@@ -85,7 +93,32 @@ class ViewsController extends Controller {
      */
     public function getForum($id) {
         $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
-        return $this->render(':site:forum.html.twig', array('activities' => $activities));
+//        $liste = array();
+
+        return $this->render(':site:forum.html.twig', array(
+                    'activities' => $activities,
+//            'liste'=>$this->getDoctrine()->getRepository(Post::class)->find($id)->getEnfants()
+                    'liste' => $this->getChild($this->getDoctrine()->getRepository(Post::class)->find($id), array())
+//            'liste'=>$liste
+        ));
+    }
+
+// la fonction get child prend id du post et une liste
+    public function getChild($p, $sortie) {
+//    $sortie = array();
+//      on stocke l'id 
+        $children = $p->getEnfants();
+//      pour chaque child dans children
+        foreach ($children as $child) {
+//            on met child dans sortie
+            array_push($sortie, $child);
+//            si child a des enfants
+            if (count($child->getEnfants()) > 0) {
+//                alors on rappel la fonction getChild
+                $sortie = $this->getChild($child, $sortie);
+            }
+        }
+        return $sortie;
     }
 
     /**
