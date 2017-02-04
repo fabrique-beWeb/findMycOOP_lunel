@@ -98,7 +98,8 @@ class ViewsController extends Controller {
         return $this->render(':site:forum.html.twig', array(
                     'activities' => $activities,
 //            'liste'=>$this->getDoctrine()->getRepository(Post::class)->find($id)->getEnfants()
-                    'liste' => $this->getChild($this->getDoctrine()->getRepository(Post::class)->find($id), array())
+//                    'liste' => $this->getChild($this->getDoctrine()->getRepository(Post::class)->find($id), array())
+                    'liste' => $this->getAllPost($this->getDoctrine()->getRepository(Post::class)->find($id))
 //            'liste'=>$liste
         ));
     }
@@ -119,6 +120,18 @@ class ViewsController extends Controller {
             }
         }
         return $sortie;
+    }
+
+//    cette fonction permet de d'afficher tous les posts du forum
+//    elle prend en parametre un post et elle retoune son parent
+    public function getAllPost($post) {
+        if ($post->getPost() != NULL) {
+            $parent = $post->getPost();
+            $post = $this->getAllPost($parent);
+        } else {
+            $post = $this->getChild($post, array());
+        }
+        return $post;
     }
 
     /**

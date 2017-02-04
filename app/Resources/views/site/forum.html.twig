@@ -1,19 +1,22 @@
 {% extends ':site:home.html.twig' %}
 {% block body %}
     <section>
-        <div class="col-lg-offset-1 col-lg-6 section">
-            {% for item in liste %}
-                {% if liste|length %}
-                <h4>bonjour : {{item.title}}</h4>
-                <div>
-                    <img>fk_image</img>
-                    <p>{{item.user.pseudo}}</p>
-                </div>
-                <div>
-                    <p>{{item.description}}</p>
-                </div>
-                {% endif %}
-            {% endfor %}
+        <div class="col-lg-8 section ">
+            <div>
+                {% for item in liste %}
+                    <div class="container-fluid details">
+                        <h3 class="text-center">{{item.title}}</h3>
+                        <div class="text-center col-lg-3">
+                            <p>{{item.user.pseudo}}</p>
+                            <img src="{{ asset('image/avatar1.png') }}" alt=""/>
+                        </div>
+                        <div>
+                            <p>{{item.description}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+
             </div>
-        </section>
-        {% endblock %}
+        </div>
+    </section>
+{% endblock %}
