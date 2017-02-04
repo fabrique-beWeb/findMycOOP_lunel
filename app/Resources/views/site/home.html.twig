@@ -65,7 +65,7 @@
                                 <li id="profil">Mon profil</li>
                             </ul>
                         {% endif %}
-                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/up.png')}}"/></a>
+                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center hide" src="{{asset('image/up.png')}}"/></a>
                         {% for activity in activities %}
                             <div class="postit">
                                 <p>{{activity.datetime|date('d/m/Y')}}</p>
