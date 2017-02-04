@@ -1,0 +1,73 @@
+.evenements div div div {
+    padding: 0.8em;
+    padding-top: 0.4em;
+    padding-bottom: 1.6em;
+    margin-bottom: 15px;
+    margin-top: 3px;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+    background-color: $thirdColor;
+}
+.evenements div div {
+    margin-top: 1em;
+    margin-right: -15px;
+    background-color: lightblue;
+    box-shadow: 1px 2px 10px;
+}
+h2 {
+    margin: 1em;
+}
+h3 {
+    font-size: 2em;
+}
+.evenements div div a:first-child {
+    text-decoration: none;
+    color: white;
+    background-color: darkslategrey;
+    position:absolute;
+    padding: 0.3em;
+    margin-top: -12px;
+    margin-left: 210px;
+    width:17%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.6s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+:hover span {
+    padding-right: 13px;
+}
+.evenements div div a:nth-child(n+2) {
+    text-decoration: none;
+    width: 30%;
+    text-align: center;
+}
+.evenements{
+    position: fixed ;
+    z-index: 3;
+    height: 0px;
+}
+.trio{
+    position: absolute;
+    margin-left: -196px ;
+    margin-top: -45px;
+    z-index: -1;
+}
+.trio li{   
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: darkslategrey;
+    color: white;
+    list-style-type: none;
+    margin: 4px;
+    padding: 2px;
+    padding-right: 40px;
+    margin-left: 20px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+.details{
+    background-color: $thirdColor;
+    box-shadow: 1px 2px 10px;
+    padding-bottom: 25px;
+    margin-top: 40px;
+}

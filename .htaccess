@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.FindMyCoop.fr$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^FindMyCoop.fr$
+RewriteCond %{REQUEST_URI} !web/
+RewriteRule (.*) web/$1 [L]
