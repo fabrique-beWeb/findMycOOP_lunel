@@ -3,16 +3,19 @@
     <section>
         <div class="col-lg-8 section ">
             <div>
-                <div class="container-fluid details">
-                    <h3 class="text-center">Titre du post</h3>
-                    <div class="text-center col-lg-3">
-                        <p>auteur</p>
-                        <img src="{{ asset('image/avatar1.png') }}" alt=""/>
+                {% for item in liste %}
+                    <div class="container-fluid details">
+                        <h3 class="text-center">{{item.title}}</h3>
+                        <div class="text-center col-lg-3">
+                            <p>{{item.user.pseudo}}</p>
+                            <img src="{{ asset('image/avatar1.png') }}" alt=""/>
+                        </div>
+                        <div>
+                            <p>{{item.description}}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p>TEXTE (datails du post)</p>
-                    </div>
-                </div>
+                {% endfor %}
+
             </div>
         </div>
     </section>
