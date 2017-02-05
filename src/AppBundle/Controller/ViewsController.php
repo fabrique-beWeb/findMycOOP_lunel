@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
-use AppBundle\Entity\Theme;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,7 +23,14 @@ class ViewsController extends Controller {
      */
     public function getProjetsPage() {
         $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
-        return $this->render(':site:projets.html.twig', array('activities' => $activities));
+        $themes = $this->getDoctrine()->getManager()->getRepository('AppBundle:Theme')->findById(2);
+        $theme = $this->getKid($this->sep($themes), array());
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByTheme($theme);
+        return $this->render(':site:projets.html.twig', array(
+        'activities' => $activities,
+        'themes' => $theme,
+        'posts' => $posts
+        ));
     }
 
     /**
@@ -51,14 +57,21 @@ class ViewsController extends Controller {
      */
     public function getBar() {
         $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
-        $themes = $this->getDoctrine()->getRepository('AppBundle:Theme')->findAll();
-        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        $themes = $this->getDoctrine()->getManager()->getRepository('AppBundle:Theme')->findById(1);
+        $theme = $this->getKid($this->sep($themes), array());
+//        $bar = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll(1);
+        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByTheme($theme);
         return $this->render(':site:bar.html.twig', array(
                     'activities' => $activities,
-//                    'themes' => $themes,
-                    'themes' => $this->getChild($this->getDoctrine()->getRepository(Theme::class)->findAll(), array()),
+                    'themes' => $theme,
                     'posts' => $posts,
         ));
+    }
+
+    public function sep($array) {
+        foreach ($array as $val) {
+            return $val;
+        }
     }
 
     /**
@@ -119,6 +132,20 @@ class ViewsController extends Controller {
                 $sortie = $this->getChild($child, $sortie);
             }
         }
+        return $sortie;
+    }
+
+    public function getKid($themes, $sortie) {
+//        echo $themes;
+//        echo json_encode($themes);
+        $children = $themes->getKids();
+        foreach ($children as $child) {
+            array_push($sortie, $child);
+            if (count($child->getKids()) > 0) {
+                $sortie = $this->getKid($child, $sortie);
+            }
+        }
+//        }
         return $sortie;
     }
 

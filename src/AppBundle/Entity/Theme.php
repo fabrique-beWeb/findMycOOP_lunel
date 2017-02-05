@@ -25,7 +25,7 @@ class Theme {
 
     /**
      * @var string
-     * @ManyToOne(targetEntity="Theme")
+     * @ManyToOne(targetEntity="Theme",inversedBy="kids")
      * @JoinColumn(name="fk_themeParent", referencedColumnName="id")
      */
     private $themeParent;
@@ -37,7 +37,16 @@ class Theme {
      * @ORM\OneToMany(targetEntity="Theme",mappedBy="themeParent")
      * 
      */
-    private $enfants;
+    private $kids;
+    
+    function getKids() {
+        return $this->kids;
+    }
+
+    function setKids($kids) {
+        $this->kids = $kids;
+    }
+
     
     /**
      * @var string

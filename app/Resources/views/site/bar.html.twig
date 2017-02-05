@@ -4,27 +4,35 @@
     <section>
         <div class="section col-lg-8">
             <h2 class="text-center">Bar</h2>
-            <section>
+            <section class="hide">
                 <p></p>
                 <input class="col-lg-9"placeholder="Nom, auteur..."/>
                 <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
             </section>
             <div class="col-lg-12" >
                 {% for theme in themes %}
-                    {% if theme.themeParent is empty%}
+                    {% for theme in theme.kids %}
                         <section class="section">
-                            <h4>{{theme.title}}</h4>
-                            {% if theme.themeParent%}
-                                <section class="section">
-                                    <h4>{{theme.title}}</h4>
-                                    <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
-                                </section>
-                            {% endif %}
-                            <a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a>
+                            <div class="col-lg-12">
+                                <h4 class="col-lg-5">{{theme.title}}</h4>
+                                {% if is_granted("ROLE_MEMBRES")%}
+                                    <h4><a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a></h4>
+                                {% endif %}
+                            </div>
+                            {% for post in posts %}
+{#                                {% if is_granted("ROLE_MEMBRES")%}#}
+                                    <div>
+                                        <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
+                                        <p>{{post.description}}</p>
+                                    </div>
+{#                                {% endif %}#}
+                            {% endfor %}
                         </section>
-                    {% endif %}
+                    {% endfor %}
                 {% endfor %}
-                <a href='{{path('theme')}}'>ajout thème</a>
+                {% if is_granted("ROLE_MEMBRES")%}
+                    <a href='{{path('theme')}}'>ajout thème</a>
+                {% endif %}
             </div>
         </div>
     </section>
