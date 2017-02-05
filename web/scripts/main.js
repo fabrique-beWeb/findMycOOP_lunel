@@ -9,25 +9,28 @@ function refrech() {
 
 $(document).ready(function () {
     $(".loading").hide();
-    $(".button").click(function () {
+    $(".button").click(function (e) {
+         e.preventDefault();
         $(".contact").hide();
         $(".loading").show();
         var mail = $(".email").val();
         var subject = $(".sujet").val();
         var message = $(".message").val();
+        alert(mail)
         $.ajax({
-            url: "http://localhost/Final/web/app_dev.php/envoieMail",
+            url: "/envoieMail",
             data: {"mail": mail, "sujet": subject, "message": message},
             type: 'get',
             dataType: 'json',
             success: function (data) {
                 info = JSON.stringify(data);
+                alert(info);
                 $(".confirmation").val(info);
                 refrech();
             },
             error: function () {
                 $(".confirmation").append("Veuillez réessayer plus tard");
-                alert("sqb");
+//                alert("sqb");
             }
         });
     });

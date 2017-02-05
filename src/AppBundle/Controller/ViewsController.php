@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Post;
+use AppBundle\Form\MailType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,9 +28,9 @@ class ViewsController extends Controller {
         $theme = $this->getKid($this->sep($themes), array());
         $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByTheme($theme);
         return $this->render(':site:projets.html.twig', array(
-        'activities' => $activities,
-        'themes' => $theme,
-        'posts' => $posts
+                    'activities' => $activities,
+                    'themes' => $theme,
+                    'posts' => $posts
         ));
     }
 
@@ -78,7 +79,9 @@ class ViewsController extends Controller {
      * @Route("/contact", name="contact")
      */
     public function getContactPage() {
-        return $this->render(':site:contact.html.twig');
+        $formContact = $this->createForm(MailType::class)->createView();
+        $subjects = $this->getDoctrine()->getRepository('AppBundle:Subject')->findAll();
+        return $this->render(':site:contact.html.twig', array('formMail' => $formContact, 'sujets'=>$subjects));
     }
 
     /**

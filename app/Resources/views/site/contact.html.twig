@@ -5,11 +5,10 @@
             <div>
                 <h3 class="text-center">Contact</h3>
                 {{form_start(formMail)}}
-{#                ,{'attr':{'action':path('envoieMail')}}#}
                 <input type="text" placeholder="Mail" class="col-lg-6">
-                {{form_widget(formMail.author, {'attr':{'class':'hide'}})}}
-                {{form_widget(formMail.receiver, {'attr':{'class':'hide'}})}}
-                {{form_widget(formMail.subject, {'attr':{'class':'hide'}})}}
+                {{form_widget(formMail.author, {'attr':{'class':'hid'}})}}
+                {{form_widget(formMail.receiver, {'attr':{'class':'hid'}})}}
+                {{form_widget(formMail.subject, {'attr':{'class':'hid'}})}}
                 <select class="col-lg-offset-4 col-lg-1">
                     {% for sujet in sujets%}
                         <option>{{sujet.name}}</option>
@@ -17,15 +16,16 @@
                 </select>
                 <div class="col-lg-12">
                 {{form_widget(formMail.post, {'attr':{'placeholder':'message'}})}}
-                {{form_widget(formMail.seen, {'attr':{'class':'hide'}})}}
-                {{form_widget(formMail.datetime, {'attr':{'class':'hide'}})}}
+                {{form_widget(formMail.seen, {'attr':{'class':'hid'}})}}
+                {{form_widget(formMail.datetime, {'attr':{'class':'hid'}})}}
                 </div>
-                <input type="submit" value="Envoyer" class="col-lg-8 col-lg-offset-2">
+                <input type="submit" value="Envoyer" class="button col-lg-8 col-lg-offset-2">
                 {{form_end(formMail)}}
                 <div>
                     <a class="col-lg-offset-11" href="{{path('home')}}"><button type="button" class="btn btn-default">Annuler</button></a>
                 </div>
             </div>
+                <p class="confirmation"></p>
     </section>
 {% endblock %}
 {% block activités %}{% endblock %}

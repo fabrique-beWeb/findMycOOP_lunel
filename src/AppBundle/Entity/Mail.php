@@ -40,7 +40,7 @@ class Mail {
     /**
      * @var string
      *
-     * @ORM\Column(name="subject", type="string", length=255)
+     * @ORM\Column(name="subject", type="string", length=255, nullable=true)
      */
     private $subject;
 
@@ -76,7 +76,7 @@ class Mail {
     /**
      * @var string
      *
-     * @ORM\Column(name="datetime", type="integer")
+     * @ORM\Column(name="datetime", type="integer", nullable=true)
      */
     private $datetime;
 
