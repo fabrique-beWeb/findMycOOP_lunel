@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Jeu 02 Février 2017 à 15:30
--- Version du serveur :  5.7.17-0ubuntu0.16.04.1
--- Version de PHP :  7.0.8-0ubuntu0.16.04.3
+-- Host: localhost
+-- Generation Time: Feb 05, 2017 at 03:55 PM
+-- Server version: 5.7.17-0ubuntu0.16.04.1
+-- PHP Version: 7.0.13-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `FindMyCoop`
+-- Database: `find_my_coop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_mail`
+-- Table structure for table `fmc_mail`
 --
 
 CREATE TABLE `fmc_mail` (
@@ -37,17 +37,10 @@ CREATE TABLE `fmc_mail` (
   `datetime` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Contenu de la table `fmc_mail`
---
-
-INSERT INTO `fmc_mail` (`id`, `author`, `receiver`, `fk_mail`, `subject`, `post`, `seen`, `datetime`) VALUES
-(1, 1, 2, NULL, 'ertyh', 'rtyyhj', 0, 3215);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_pictures`
+-- Table structure for table `fmc_pictures`
 --
 
 CREATE TABLE `fmc_pictures` (
@@ -61,7 +54,7 @@ CREATE TABLE `fmc_pictures` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_post`
+-- Table structure for table `fmc_post`
 --
 
 CREATE TABLE `fmc_post` (
@@ -76,16 +69,20 @@ CREATE TABLE `fmc_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `fmc_post`
+-- Dumping data for table `fmc_post`
 --
 
 INSERT INTO `fmc_post` (`id`, `fk_theme`, `fk_post`, `fk_user`, `title`, `description`, `url`, `datetime`) VALUES
-(1, NULL, NULL, 1, 'find my coop', 'text text text text text text text text text text text text text text text text text text text text text text text text', 'jezkhe', '1486040969');
+(1, 200, NULL, 1, 'Find my Coop', 'text text text text text text text text text text text text text text text text text text text text text text text text text text text text text', 'url', '1486237120'),
+(2, NULL, 1, 1, 'couche presentation', 'text text text text text text text text text text text text text text text text text text text text text text', 'null', '1486237192'),
+(3, NULL, 1, 1, 'couche metier', '<p>{{item.user.pseudo}}</p>\r\n                            <p>{{item.user.pseudo}}</p>\r\n                            <p>{{item.user.pseudo}}</p>\r\n                            <p>{{item.user.pseudo}}</p>', 'null', '1486243506'),
+(4, 121, NULL, 1, 'les vingts de France', 'Ici vous pouvez parler de tous les vingt. Pas de discrimination, vingt rouges, blanc, rose, vin et un , vin neuf, etc...', 'null', '12354'),
+(5, NULL, 4, 1, 'le vingt deux Côtes-d\'Armor', 'le vingt deux Côtes-d\'Armor est un vingt rouge elever durant vin ans ', 'null', '15635847');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_subject`
+-- Table structure for table `fmc_subject`
 --
 
 CREATE TABLE `fmc_subject` (
@@ -96,7 +93,7 @@ CREATE TABLE `fmc_subject` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_theme`
+-- Table structure for table `fmc_theme`
 --
 
 CREATE TABLE `fmc_theme` (
@@ -106,16 +103,25 @@ CREATE TABLE `fmc_theme` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `fmc_theme`
+-- Dumping data for table `fmc_theme`
 --
 
 INSERT INTO `fmc_theme` (`id`, `title`, `fk_themeParent`) VALUES
-(1, 'Informatique', 1);
+(1, 'bar', NULL),
+(2, 'projet', NULL),
+(11, 'Informatique', 1),
+(12, 'electro', 1),
+(20, 'Informatique', 2),
+(110, '20', 11),
+(111, 'web', 11),
+(121, 'CUISINE', 11),
+(123, 'bierre', 12),
+(200, 'web', 20);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fmc_user`
+-- Table structure for table `fmc_user`
 --
 
 CREATE TABLE `fmc_user` (
@@ -135,19 +141,18 @@ CREATE TABLE `fmc_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Contenu de la table `fmc_user`
+-- Dumping data for table `fmc_user`
 --
 
 INSERT INTO `fmc_user` (`id`, `name`, `firstName`, `pseudo`, `passWord`, `address`, `city`, `url`, `mail`, `postalCode`, `posts`, `boss`, `role`) VALUES
-(1, NULL, NULL, 'drat', 'user', NULL, NULL, NULL, 'j.sebastien34@gmail.fr', NULL, 'a:0:{}', 'a:0:{}', 'a:1:{i:0;s:12:"ROLE_MEMBRES";}'),
-(2, NULL, NULL, 'user', 'user', NULL, NULL, NULL, 'jeh@zj', NULL, 'a:0:{}', 'a:0:{}', 'a:1:{i:0;s:12:"ROLE_MEMBRES";}');
+(1, NULL, NULL, 'user', 'user', NULL, NULL, NULL, 'user@user.fr', NULL, 'a:0:{}', 'a:0:{}', 'a:1:{i:0;s:12:"ROLE_MEMBRES";}');
 
 --
--- Index pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `fmc_mail`
+-- Indexes for table `fmc_mail`
 --
 ALTER TABLE `fmc_mail`
   ADD PRIMARY KEY (`id`),
@@ -156,7 +161,7 @@ ALTER TABLE `fmc_mail`
   ADD KEY `IDX_DD860DCADD187276` (`fk_mail`);
 
 --
--- Index pour la table `fmc_pictures`
+-- Indexes for table `fmc_pictures`
 --
 ALTER TABLE `fmc_pictures`
   ADD PRIMARY KEY (`id`),
@@ -164,7 +169,7 @@ ALTER TABLE `fmc_pictures`
   ADD KEY `IDX_5A9F15C51AD0877` (`fk_user`);
 
 --
--- Index pour la table `fmc_post`
+-- Indexes for table `fmc_post`
 --
 ALTER TABLE `fmc_post`
   ADD PRIMARY KEY (`id`),
@@ -173,20 +178,20 @@ ALTER TABLE `fmc_post`
   ADD KEY `IDX_D62ACD0F1AD0877` (`fk_user`);
 
 --
--- Index pour la table `fmc_subject`
+-- Indexes for table `fmc_subject`
 --
 ALTER TABLE `fmc_subject`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `fmc_theme`
+-- Indexes for table `fmc_theme`
 --
 ALTER TABLE `fmc_theme`
   ADD PRIMARY KEY (`id`),
   ADD KEY `IDX_944FA5A581CEAE34` (`fk_themeParent`);
 
 --
--- Index pour la table `fmc_user`
+-- Indexes for table `fmc_user`
 --
 ALTER TABLE `fmc_user`
   ADD PRIMARY KEY (`id`),
@@ -195,45 +200,45 @@ ALTER TABLE `fmc_user`
   ADD UNIQUE KEY `UNIQ_13377CB5126AC48` (`mail`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `fmc_mail`
+-- AUTO_INCREMENT for table `fmc_mail`
 --
 ALTER TABLE `fmc_mail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `fmc_pictures`
+-- AUTO_INCREMENT for table `fmc_pictures`
 --
 ALTER TABLE `fmc_pictures`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `fmc_post`
+-- AUTO_INCREMENT for table `fmc_post`
 --
 ALTER TABLE `fmc_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT pour la table `fmc_subject`
+-- AUTO_INCREMENT for table `fmc_subject`
 --
 ALTER TABLE `fmc_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `fmc_theme`
+-- AUTO_INCREMENT for table `fmc_theme`
 --
 ALTER TABLE `fmc_theme`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1111;
 --
--- AUTO_INCREMENT pour la table `fmc_user`
+-- AUTO_INCREMENT for table `fmc_user`
 --
 ALTER TABLE `fmc_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- Contraintes pour les tables exportées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `fmc_mail`
+-- Constraints for table `fmc_mail`
 --
 ALTER TABLE `fmc_mail`
   ADD CONSTRAINT `FK_DD860DCA3DB88C96` FOREIGN KEY (`receiver`) REFERENCES `fmc_user` (`id`),
@@ -241,14 +246,14 @@ ALTER TABLE `fmc_mail`
   ADD CONSTRAINT `FK_DD860DCADD187276` FOREIGN KEY (`fk_mail`) REFERENCES `fmc_mail` (`id`);
 
 --
--- Contraintes pour la table `fmc_pictures`
+-- Constraints for table `fmc_pictures`
 --
 ALTER TABLE `fmc_pictures`
   ADD CONSTRAINT `FK_5A9F15C51AD0877` FOREIGN KEY (`fk_user`) REFERENCES `fmc_user` (`id`),
   ADD CONSTRAINT `FK_5A9F15C5D6B4B2B3` FOREIGN KEY (`fk_post`) REFERENCES `fmc_post` (`id`);
 
 --
--- Contraintes pour la table `fmc_post`
+-- Constraints for table `fmc_post`
 --
 ALTER TABLE `fmc_post`
   ADD CONSTRAINT `FK_D62ACD0F1AD0877` FOREIGN KEY (`fk_user`) REFERENCES `fmc_user` (`id`),
@@ -256,7 +261,7 @@ ALTER TABLE `fmc_post`
   ADD CONSTRAINT `FK_D62ACD0FD6B4B2B3` FOREIGN KEY (`fk_post`) REFERENCES `fmc_post` (`id`);
 
 --
--- Contraintes pour la table `fmc_theme`
+-- Constraints for table `fmc_theme`
 --
 ALTER TABLE `fmc_theme`
   ADD CONSTRAINT `FK_944FA5A581CEAE34` FOREIGN KEY (`fk_themeParent`) REFERENCES `fmc_theme` (`id`);
