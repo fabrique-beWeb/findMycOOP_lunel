@@ -40,7 +40,7 @@ var positionBase;
 var pageShow;
 var btnSelect;
 var url;
-var carnet = "http://find-my-coop.janus-developpement.com/carnet";
+var carnet = "http://www.findmycoop.fr/carnet";
 $(window).load(function () {
     positionBase = $(".evenements").position().top;
 //    $("#projet").hide();
@@ -64,7 +64,7 @@ $(window).scroll(function () {
 
 $(".trio > li").click(function () {
     if (url != carnet) {
-        window.location = "http://find-my-coop.janus-developpement.com/carnet";
+        window.location = "http://www.findmycoop.fr/carnet";
     }
     var id = $(this).attr("id");
     pageShow.hide();
