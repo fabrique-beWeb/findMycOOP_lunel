@@ -91,7 +91,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/userValid", name="vaildUser")
+     * @Route("/userValid", name="validUser")
      */
     public function getValidUser(Request $r) {
         $u = new User();
@@ -117,7 +117,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/postVaild", name="postVaild")
+     * @Route("/postVaild", name="postValid")
      */
     public function getValidPost(Request $r) {
         $p = new Post;
