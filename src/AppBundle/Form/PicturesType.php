@@ -15,7 +15,6 @@ class PicturesType extends AbstractType
     {
         $builder->add('url')
                 ->add('alt')
-                ->add('post')
                 ->add('user')
                 ;
     }

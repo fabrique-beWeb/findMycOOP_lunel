@@ -39,13 +39,6 @@ class Pictures {
 
     /**
      * @var string
-     * @ManyToOne(targetEntity="Post")
-     * @JoinColumn(name="fk_post", referencedColumnName="id")
-     */
-    private $post;
-
-    /**
-     * @var string
      * @ManyToOne(targetEntity="User")
      * @JoinColumn(name="fk_user", referencedColumnName="id")
      */
@@ -102,28 +95,6 @@ class Pictures {
      */
     public function getAlt() {
         return $this->alt;
-    }
-
-    /**
-     * Set post
-     *
-     * @param string $post
-     *
-     * @return Pictures
-     */
-    public function setPost($post) {
-        $this->post = $post;
-
-        return $this;
-    }
-
-    /**
-     * Get post
-     *
-     * @return string
-     */
-    public function getPost() {
-        return $this->post;
     }
 
     /**
