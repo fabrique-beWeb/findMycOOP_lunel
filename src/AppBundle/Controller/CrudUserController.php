@@ -83,7 +83,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/User", name="user")
+     * @Route("/register", name="register")
      */
     public function getAddUser() {
         $formUser = $this->createForm(UserType::class);
