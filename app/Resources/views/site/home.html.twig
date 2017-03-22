@@ -41,13 +41,7 @@
 
                 </section>
             {% endblock %}
-            {% if is_granted("ROLE_MEMBRES")%}
-            {% block contactez_nous %}{% endblock %}
-        {% else %}
-            <div class="col-lg-8 text-center nous">
-                <a  href="{{path('contact')}}">Contactez nous</a>
-            </div>
-        {% endif %}
+        
         {% block activités %}
             <section class="evenements container">
                 <div>
