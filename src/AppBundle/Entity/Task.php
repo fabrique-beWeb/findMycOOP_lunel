@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Task
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="task")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TaskRepository")
  */
-class Task
-{
+class Task implements JsonSerializable {
+
     /**
      * @var int
      *
@@ -21,15 +22,14 @@ class Task
      */
     private $id;
 
-    
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Project")
      * @ORM\JoinColumn(name="fk_project", referencedColumnName="id")
      */
-    private $fkproject;            
-    
+    private $fkproject;
+
     /**
      * @var string
      *
@@ -44,14 +44,12 @@ class Task
      */
     private $text;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -62,8 +60,7 @@ class Task
      *
      * @return Task
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -74,8 +71,7 @@ class Task
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -86,8 +82,7 @@ class Task
      *
      * @return Task
      */
-    public function setText($text)
-    {
+    public function setText($text) {
         $this->text = $text;
 
         return $this;
@@ -98,9 +93,17 @@ class Task
      *
      * @return string
      */
-    public function getText()
-    {
+    public function getText() {
         return $this->text;
     }
-}
 
+    public function jsonSerialize() {
+        return array(
+            "id" => $this->id,
+            "project" => $this->fksousTheme,
+            "title" => $this->title,
+            "text" => $this->datetime
+        );
+    }
+
+}

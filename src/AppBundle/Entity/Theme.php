@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Theme
@@ -10,8 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="theme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
  */
-class Theme
+class Theme implements JsonSerializable
 {
+    
     /**
      * @var int
      *
@@ -93,5 +95,14 @@ class Theme
     {
         return $this->description;
     }
+
+    public function jsonSerialize() {
+        return array(
+            "id" => $this->id,
+            "title" => $this->title,
+            "description" => $this->description
+        );
+    }
+
 }
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Project
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
  */
-class Project
+class Project implements JsonSerializable
 {
     /**
      * @var int
@@ -118,5 +119,17 @@ class Project
     {
         return $this->text;
     }
+
+    public function jsonSerialize() {
+        return array(
+          "id" => $this->id,  
+          "sousTheme" => $this->fksousTheme,  
+          "userBoss" => $this->fkuserBoss,  
+          "userColab" => $this->fkuserColab,  
+          "title" => $this->title,  
+          "text" => $this->text,  
+        );
+    }
+
 }
 

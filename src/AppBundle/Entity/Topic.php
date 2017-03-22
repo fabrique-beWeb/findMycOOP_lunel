@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Topic
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="topic")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TopicRepository")
  */
-class Topic
+class Topic implements JsonSerializable
 {
     /**
      * @var int
@@ -45,7 +47,7 @@ class Topic
     private $title;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="datetime", type="datetime")
      */
@@ -89,7 +91,7 @@ class Topic
     /**
      * Set datetime
      *
-     * @param \DateTime $datetime
+     * @param DateTime $datetime
      *
      * @return Topic
      */
@@ -103,11 +105,22 @@ class Topic
     /**
      * Get datetime
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDatetime()
     {
         return $this->datetime;
     }
+
+    public function jsonSerialize() {
+        return array(
+            "id" => $this->id,
+            "soustheme" => $this->fksousTheme,
+            "user" => $this->fkuser,
+            "title" => $this->title,
+            "datetime" => $this->datetime,
+        );
+    }
+
 }
 

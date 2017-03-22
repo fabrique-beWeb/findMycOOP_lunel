@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Post;
+use AppBundle\Entity\Theme;
 use AppBundle\Form\MailType;
 use AppBundle\Form\UserType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ViewsController extends Controller {
 
@@ -50,7 +52,7 @@ class ViewsController extends Controller {
     public function getContactPage() {
         $formContact = $this->createForm(MailType::class)->createView();
         $subjects = $this->getDoctrine()->getRepository('AppBundle:Subject')->findAll();
-        return $this->render(':site:contact.html.twig', array('formMail' => $formContact, 'sujets'=>$subjects));
+        return $this->render(':site:contact.html.twig', array('formMail' => $formContact, 'sujets' => $subjects));
     }
 
     /**
@@ -77,6 +79,15 @@ class ViewsController extends Controller {
      */
     public function getLogin() {
         return $this->render(':site:login.html.twig');
+    }
+
+    /**
+     * @Route("/themes", name="themes")
+     * @Method({"GET"})
+     */
+    public function getThemes(){
+        $themes = $this->getDoctrine()->getRepository(Theme::class)->findAll();
+        return new JsonResponse($themes);
     }
 
 }

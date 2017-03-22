@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Subject
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="fmc_subject")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SubjectRepository")
  */
-class Subject
+class Subject implements JsonSerializable
 {
     /**
      * @var int
@@ -62,5 +63,13 @@ class Subject
     {
         return $this->name;
     }
+
+    public function jsonSerialize() {
+        return array(
+            "id" => $this->id,
+            "name" => $this->name
+        );
+    }
+
 }
 

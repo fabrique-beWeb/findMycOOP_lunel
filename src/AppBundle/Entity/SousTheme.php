@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * SousTheme
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sous_theme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SousThemeRepository")
  */
-class SousTheme
+class SousTheme implements JsonSerializable
 {
     /**
      * @var int
@@ -93,5 +94,14 @@ class SousTheme
     {
         return $this->description;
     }
+
+    public function jsonSerialize() {
+                return array(
+            "id" => $this->id,
+            "title" => $this->fksousTheme,
+            "user" => $this->fkuser
+        );
+    }
+
 }
 

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use JsonSerializable;
 
 /**
  * Pictures
@@ -12,7 +13,8 @@ use Doctrine\ORM\Mapping\ManyToOne;
  * @ORM\Table(name="fmc_pictures")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PicturesRepository")
  */
-class Pictures {
+class Pictures implements JsonSerializable
+{
 
     /**
      * @var int
@@ -117,6 +119,16 @@ class Pictures {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    public function jsonSerialize() {
+        return array(
+            "id" => $this->id,
+            "url" => $this->url,
+            "alt" => $this->alt,
+            "user" => $this->user
+                
+        );
     }
 
 }
