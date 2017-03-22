@@ -21,9 +21,9 @@
                     <nav class="navbar navbar-inverse">
                         <ul class="nav text-center">
                             <li class="col-lg-3"><a href="{{path('home')}}">Accueil</a></li>
-                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>
+{#                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>#}
                             <li class="col-lg-3"><a href="{{path('membres')}}">Membres</a></li>
-                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>
+{#                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>#}
                         </ul>
                     </nav>
                 </div>
@@ -34,9 +34,9 @@
                 <section>
                     <div class="col-lg-8 section ">
                         <h2 class="text-center">Presentation</h2>
-                        {% for presentation in description %}
+{#                        {% for presentation in description %}
                             <p>{{presentation.description}}</p>
-                        {% endfor %}
+                        {% endfor %}#}
                     </div>
 
                 </section>
@@ -66,14 +66,14 @@
                             </ul>
                         {% endif %}
                         <a class="col-lg-offset-6 text-center" href=""/><img class="text-center hide" src="{{asset('image/up.png')}}"/></a>
-                        {% for activity in activities %}
+{#                        {% for activity in activities %}
                             <div class="postit">
                                 <p>{{activity.datetime|date('d/m/Y')}}</p>
                                 <h4 class="text-center">{{activity.title}}</h4>
                                 <p class="text-justify">{{activity.description}}</p>
                                 <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
                             </div>
-                        {% endfor %} 
+                        {% endfor %} #}
                         <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>
                     </div>
                 </div>

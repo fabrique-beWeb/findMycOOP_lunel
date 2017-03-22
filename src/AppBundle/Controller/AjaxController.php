@@ -26,7 +26,7 @@ class AjaxController extends Controller {
     public function getEnvoieMail(Request $r) {
         
         $reponseJson = new JsonResponse();
-        return $reponseJson->setData($result);
+        return $reponseJson->setData($r);
 //        return $this->redirectToRoute('home');
     }
 

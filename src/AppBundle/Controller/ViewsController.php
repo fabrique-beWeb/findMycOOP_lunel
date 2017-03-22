@@ -14,9 +14,10 @@ class ViewsController extends Controller {
      * @Route("/", name="home")
      */
     public function getHome() {
-//        $home = $this->getDoctrine()->getRepository('AppBundle:Post')->findById(1);
-//        $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
-//        return $this->render(':site:home.html.twig', array('description' => $home, 'activities' => $activities));
+        $home = $this->getDoctrine()->getRepository('AppBundle:Post')->findById(1);
+        $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
+        return $this->render(':site:home.html.twig', array('description' => $home, 'activities' => $activities));
+//        return $this->render(':site:home.html.twig');
     }
 
     /**
@@ -33,7 +34,6 @@ class ViewsController extends Controller {
 //        $activities = $this->getDoctrine()->getRepository('AppBundle:Post')->findAll();
         $membres = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         return $this->render(':site:membres.html.twig', array(
-                    'activities' => $activities,
                     'membres' => $membres,
         ));
     }
@@ -65,10 +65,9 @@ class ViewsController extends Controller {
         $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findByReceiver($this->getUser());
 //        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByUser($this->getUser());
         return $this->render(':membres:carnetDeBord.html.twig', array(
-                    'activities' => $activities,
+//                    'activities' => $activities,
                     'users' => $users,
                     'mails' => $mails,
-                    'posts' => $posts,
                     'formUser' => $formUser
         ));
     }

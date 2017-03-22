@@ -8,14 +8,14 @@
             <h2 class="text-center">Carnet de bord</h2>
         </div>
         <section id="projet">
-            {% for post in posts %}
+{#            {% for post in posts %}
                 <div class="last">
                     <h3>{{post.title}}</h3>
                     <h4 class="text-center">Last activités</h4>
                     <p class="text-justify">{{post.description}}</p>
                     <a href="{{path('forum',{'id':post.id })}}"><button class="col-lg-offset-9 col-lg-3">Details</button></a>
                 </div>
-            {% endfor %}
+            {% endfor %}#}
         </section>
         <section id="message">
             {% for mail in mails %}
