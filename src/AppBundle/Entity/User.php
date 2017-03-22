@@ -3,6 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 
@@ -12,7 +15,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="fmc_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User implements UserInterface, \Serializable {
+class User implements UserInterface, Serializable {
     /**
      * @var int
      *
@@ -22,6 +25,17 @@ class User implements UserInterface, \Serializable {
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="Task")
+     * @JoinTable(name="users_tasks",
+     *      joinColumns={@JoinColumn(name="taskId", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="userId", referencedColumnName="id")}
+     *      )
+     */
+    private $fktask;
+    
     /**
      * @var string
      *

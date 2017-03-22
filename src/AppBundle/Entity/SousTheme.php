@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Theme
+ * SousTheme
  *
- * @ORM\Table(name="theme")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
+ * @ORM\Table(name="sous_theme")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SousThemeRepository")
  */
-class Theme
+class SousTheme
 {
     /**
      * @var int
@@ -20,7 +20,7 @@ class Theme
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -51,7 +51,7 @@ class Theme
      *
      * @param string $title
      *
-     * @return Theme
+     * @return SousTheme
      */
     public function setTitle($title)
     {
@@ -75,7 +75,7 @@ class Theme
      *
      * @param string $description
      *
-     * @return Theme
+     * @return SousTheme
      */
     public function setDescription($description)
     {

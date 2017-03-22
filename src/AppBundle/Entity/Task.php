@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Theme
+ * Task
  *
- * @ORM\Table(name="theme")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
+ * @ORM\Table(name="task")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaskRepository")
  */
-class Theme
+class Task
 {
     /**
      * @var int
@@ -20,6 +20,15 @@ class Theme
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="Project")
+     * @ORM\JoinColumn(name="fk_project", referencedColumnName="id")
+     */
+    private $fkproject;            
     
     /**
      * @var string
@@ -31,9 +40,9 @@ class Theme
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="text", type="string", length=255, nullable=true)
      */
-    private $description;
+    private $text;
 
 
     /**
@@ -51,7 +60,7 @@ class Theme
      *
      * @param string $title
      *
-     * @return Theme
+     * @return Task
      */
     public function setTitle($title)
     {
@@ -71,27 +80,27 @@ class Theme
     }
 
     /**
-     * Set description
+     * Set text
      *
-     * @param string $description
+     * @param string $text
      *
-     * @return Theme
+     * @return Task
      */
-    public function setDescription($description)
+    public function setText($text)
     {
-        $this->description = $description;
+        $this->text = $text;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get text
      *
      * @return string
      */
-    public function getDescription()
+    public function getText()
     {
-        return $this->description;
+        return $this->text;
     }
 }
 

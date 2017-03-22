@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Post
+ * Topic
  *
- * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
+ * @ORM\Table(name="topic")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TopicRepository")
  */
-class Post
+class Topic
 {
     /**
      * @var int
@@ -24,34 +24,19 @@ class Post
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Topic")
-     * @ORM\JoinColumn(name="fk_topic", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="SousTheme")
+     * @ORM\JoinColumn(name="fk_sousTheme", referencedColumnName="id")
      */
-    private $fktopic;
-    
+    private $fksousTheme;      
+
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="fk_user", referencedColumnName="id")
      */
-    private $fkuser;
-
-    /**
-     * @var string
-     *
-     * @ORM\ManyToOne(targetEntity="Task")
-     * @ORM\JoinColumn(name="fk_task", referencedColumnName="id")
-     */
-    private $fktask;
+    private $fkuser;      
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="text", type="string", length=255)
-     */
-    private $text;
-
     /**
      * @var string
      *
@@ -78,35 +63,11 @@ class Post
     }
 
     /**
-     * Set text
-     *
-     * @param string $text
-     *
-     * @return Post
-     */
-    public function setText($text)
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * Get text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->text;
-    }
-
-    /**
      * Set title
      *
      * @param string $title
      *
-     * @return Post
+     * @return Topic
      */
     public function setTitle($title)
     {
@@ -130,7 +91,7 @@ class Post
      *
      * @param \DateTime $datetime
      *
-     * @return Post
+     * @return Topic
      */
     public function setDatetime($datetime)
     {
