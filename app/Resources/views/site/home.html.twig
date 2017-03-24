@@ -21,9 +21,9 @@
                     <nav class="navbar navbar-inverse">
                         <ul class="nav text-center">
                             <li class="col-lg-3"><a href="{{path('home')}}">Accueil</a></li>
-{#                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>#}
+                                {#                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>#}
                             <li class="col-lg-3"><a href="{{path('membres')}}">Membres</a></li>
-{#                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>#}
+                                {#                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>#}
                         </ul>
                     </nav>
                 </div>
@@ -34,14 +34,20 @@
                 <section>
                     <div class="col-lg-8 section ">
                         <h2 class="text-center">Presentation</h2>
-{#                        {% for presentation in description %}
-                            <p>{{presentation.description}}</p>
-                        {% endfor %}#}
+                        {#                        {% for presentation in description %}
+                                                    <p>{{presentation.description}}</p>
+                                                {% endfor %}#}
                     </div>
 
                 </section>
             {% endblock %}
-        
+            {% if is_granted("ROLE_MEMBRES")%}
+            {% block contactez_nous %}{% endblock %}
+        {% else %}
+            <div class="col-lg-8 text-center nous">
+{#                <a  href="{{path('contact')}}">Contactez nous</a>#}
+            </div>
+        {% endif %}
         {% block activités %}
             <section class="evenements container">
                 <div>
@@ -60,14 +66,14 @@
                             </ul>
                         {% endif %}
                         <a class="col-lg-offset-6 text-center" href=""/><img class="text-center hide" src="{{asset('image/up.png')}}"/></a>
-{#                        {% for activity in activities %}
-                            <div class="postit">
-                                <p>{{activity.datetime|date('d/m/Y')}}</p>
-                                <h4 class="text-center">{{activity.title}}</h4>
-                                <p class="text-justify">{{activity.description}}</p>
-                                <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
-                            </div>
-                        {% endfor %} #}
+                        {#                        {% for activity in activities %}
+                                                    <div class="postit">
+                                                        <p>{{activity.datetime|date('d/m/Y')}}</p>
+                                                        <h4 class="text-center">{{activity.title}}</h4>
+                                                        <p class="text-justify">{{activity.description}}</p>
+                                                        <a class="col-lg-offset-9 col-lg-3" href='{{path('forum',{'id':activity.id })}}'>détails</a>
+                                                    </div>
+                                                {% endfor %} #}
                         <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>
                     </div>
                 </div>
@@ -77,6 +83,8 @@
     <footer class="text-center">
         <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
     </footer>
+    <script src="{{asset('scripts/angular.min.js')}}"></script>
+    <script src="{{asset('scripts/projects.js')}}"></script>
     <script src="{{asset('scripts/jQuery.js')}}"></script>
     <script src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
     <script src="{{asset('scripts/main.js')}}"></script>
