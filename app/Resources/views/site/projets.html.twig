@@ -1,12 +1,12 @@
 {% extends ':site:home.html.twig' %}
 
 {% block body %}
-    <section>
+{#    <section>
         <div class="col-lg-8 , section">
             <h2 class="text-center">Projets</h2>
             <section class="hide">
                 <input class="col-lg-9" placeholder="Nom, auteur..."/>
-                <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche">
+                <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
             </section>
             <section class="container col-lg-12 hide">
                 <div class="panel-group" >
@@ -57,13 +57,13 @@
                             {% endif %}
                         </div>
                         {% for post in posts %}
-                            {#                                {% if is_granted("ROLE_MEMBRES")%}#}
+                            {#                                {% if is_granted("ROLE_MEMBRES")%}
                             <div>
                                 <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
                                 <p>{{post.description}}</p>
                             </div>
                             {#                                {% endif %}#}
-                        {% endfor %}
+                        {#{% endfor %}
                     </section>
                 {% endfor %}
             {% endfor %}
@@ -71,5 +71,5 @@
                 <a href='{{path('theme')}}'>ajout thème</a>
             {% endif %}
         </div>
-    </section>
+    </section>#}
 {% endblock %}

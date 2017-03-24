@@ -51,4 +51,5 @@ class CrudUserController extends Controller {
         }
         return $this->redirectToRoute('user', array('formUser' => $formUser->createView()));
     }
+    
 }
