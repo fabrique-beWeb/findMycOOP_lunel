@@ -21,7 +21,7 @@
                     <nav class="navbar navbar-inverse">
                         <ul class="nav text-center">
                             <li class="col-lg-3"><a href="{{path('home')}}">Accueil</a></li>
-                                {#                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>#}
+                            <li class="col-lg-3"><a href="{{path('projets')}}">Projets</a></li>
                             <li class="col-lg-3"><a href="{{path('membres')}}">Membres</a></li>
                                 {#                            <li class="col-lg-3"><a href="{{path('bar')}}">Bar</a></li>#}
                         </ul>
@@ -45,7 +45,7 @@
             {% block contactez_nous %}{% endblock %}
         {% else %}
             <div class="col-lg-8 text-center nous">
-{#                <a  href="{{path('contact')}}">Contactez nous</a>#}
+                {#                <a  href="{{path('contact')}}">Contactez nous</a>#}
             </div>
         {% endif %}
         {% block activités %}

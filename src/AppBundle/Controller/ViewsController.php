@@ -26,6 +26,14 @@ class ViewsController extends Controller {
         return $this->render(':site:home.html.twig', array('description' => $home, 'activities' => $activities));
 //        return $this->render(':site:home.html.twig');
     }
+    
+    /**
+     * @Route("/projets", name="projets")
+     */
+    public function getProjetPage() {
+        return $this->render(':site:projets.html.twig');
+//        return $this->render(':site:home.html.twig');
+    }
 
     /**
      * @Route("/details", name="detailsProjet")

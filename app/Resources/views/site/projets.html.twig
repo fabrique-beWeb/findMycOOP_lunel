@@ -1,7 +1,7 @@
 {% extends ':site:home.html.twig' %}
 
 {% block body %}
-{#    <section>
+    <section>
         <div class="col-lg-8 , section">
             <h2 class="text-center">Projets</h2>
             <section class="hide">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </section>
-            {% for theme in themes %}
+{#            {% for theme in themes %}
                 {% for theme in theme.kids %}
                     <section class="section">
                         <div class="col-lg-12">
@@ -57,19 +57,19 @@
                             {% endif %}
                         </div>
                         {% for post in posts %}
-                            {#                                {% if is_granted("ROLE_MEMBRES")%}
-                            <div>
-                                <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
-                                <p>{{post.description}}</p>
-                            </div>
-                            {#                                {% endif %}#}
-                        {#{% endfor %}
+                            {% if is_granted("ROLE_MEMBRES")%}
+                                <div>
+                                    <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
+                                    <p>{{post.description}}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </section>
                 {% endfor %}
-            {% endfor %}
+            {% endfor %}#}
             {% if is_granted("ROLE_MEMBRES")%}
-                <a href='{{path('theme')}}'>ajout thème</a>
+{#                <a href='{{path('theme')}}'>ajout thème</a>#}
             {% endif %}
         </div>
-    </section>#}
+    </section>
 {% endblock %}
