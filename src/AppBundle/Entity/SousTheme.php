@@ -98,8 +98,8 @@ class SousTheme implements JsonSerializable
     public function jsonSerialize() {
                 return array(
             "id" => $this->id,
-            "title" => $this->fksousTheme,
-            "user" => $this->fkuser
+            "title" => $this->title,
+            "description" => $this->description
         );
     }
 

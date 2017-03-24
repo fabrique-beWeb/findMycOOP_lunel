@@ -100,9 +100,9 @@ class Task implements JsonSerializable {
     public function jsonSerialize() {
         return array(
             "id" => $this->id,
-            "project" => $this->fksousTheme,
+            "project" => $this->fkproject,
             "title" => $this->title,
-            "text" => $this->datetime
+            "text" => $this->text
         );
     }
 

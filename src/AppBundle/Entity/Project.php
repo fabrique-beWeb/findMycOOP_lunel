@@ -124,8 +124,8 @@ class Project implements JsonSerializable
         return array(
           "id" => $this->id,  
           "sousTheme" => $this->fksousTheme,  
-          "userBoss" => $this->fkuserBoss,  
-          "userColab" => $this->fkuserColab,  
+          "userBoss" => $this->fkuserBoss->getName(),  
+          "userColab" => $this->fkuserColab->getName(),  
           "title" => $this->title,  
           "text" => $this->text,  
         );

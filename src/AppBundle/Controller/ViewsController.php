@@ -2,7 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Post;
+use AppBundle\Entity\Project;
+use AppBundle\Entity\SousTheme;
+use AppBundle\Entity\Task;
 use AppBundle\Entity\Theme;
+use AppBundle\Entity\Topic;
 use AppBundle\Form\MailType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -90,4 +95,48 @@ class ViewsController extends Controller {
         return new JsonResponse($themes);
     }
 
+    /**
+     * @Route("/sous-theme", name="sousTheme")
+     * @Method({"GET"})
+     */
+    public function getSousTheme(){
+        $sousTheme = $this->getDoctrine()->getRepository(SousTheme::class)->findAll();
+        return new JsonResponse($sousTheme);
+    }
+    
+    /**
+     * @Route("/projects", name="projects")
+     * @Method({"GET"})
+     */
+    public function getProjects(){
+        $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
+        return new JsonResponse($projects);
+    }
+    
+    /**
+     * @Route("/topics", name="topics")
+     * @Method({"GET"})
+     */
+    public function getTopics(){
+        $topics = $this->getDoctrine()->getRepository(Topic::class)->findAll();
+        return new JsonResponse($topics);
+    }
+    
+    /**
+     * @Route("/tasks", name="tasks")
+     * @Method({"GET"})
+     */
+    public function getTasks(){
+        $tasks = $this->getDoctrine()->getRepository(Task::class)->findAll();
+        return new JsonResponse($tasks);
+    }
+    
+    /**
+     * @Route("/posts", name="posts")
+     * @Method({"GET"})
+     */
+    public function getPosts(){
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        return new JsonResponse($posts);
+    }
 }
