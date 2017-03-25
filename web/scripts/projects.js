@@ -1,8 +1,12 @@
-var monAppli = angular.module('fmc', []);
+var monAppli = angular.module('project', []);
 
-monAppli.controller('projects',['scope',
-    function ($scope) {
-    
-    }
-]);
-
+monAppli.controller('projectCtrl', [
+    '$scope', '$http', function ($scope, $http) {
+        
+        $scope.projects = [];
+        
+        $http.get("http:///www.findmycoop.fr/projects")
+                .then(function (response){
+           $scope.projects = response.data; 
+        });
+    }]);

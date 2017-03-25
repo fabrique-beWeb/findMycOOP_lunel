@@ -35,6 +35,12 @@ class SousTheme implements JsonSerializable
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Theme")
+     * @ORM\JoinColumn(name="fk_theme", referencedColumnName="id")
+     */
+    private $fktheme;
 
 
     /**
@@ -99,7 +105,8 @@ class SousTheme implements JsonSerializable
                 return array(
             "id" => $this->id,
             "title" => $this->title,
-            "description" => $this->description
+            "description" => $this->description,
+            "fktheme" => $this->fktheme
         );
     }
 

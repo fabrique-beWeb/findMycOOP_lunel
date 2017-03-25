@@ -4,71 +4,79 @@
     <section>
         <div class="col-lg-8 , section">
             <h2 class="text-center">Projets</h2>
-            <section class="hide">
-                <input class="col-lg-9" placeholder="Nom, auteur..."/>
-                <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
-            </section>
-            <section class="container col-lg-12 hide">
-                <div class="panel-group" >
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Grand T</a>
-                            </h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
-                            <div class="panel-body" id="accordion">   
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sous T</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse2" class="panel-collapse collapse">
-                                        <div class="panel-body">bla bla</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse in">
-                            <div class="panel-body" id="accordion">   
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frere T</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse3" class="panel-collapse collapse">
-                                        <div class="panel-body">bla bla</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            {% verbatim %}
+                <div ng-app="project">
+                    <div ng-controller="projectCtrl">
+                        <h2>{{projects}}</h2>
+
                     </div>
                 </div>
-            </section>
-{#            {% for theme in themes %}
-                {% for theme in theme.kids %}
-                    <section class="section">
-                        <div class="col-lg-12">
-                            <h4 class="col-lg-5">{{theme.title}}</h4>
-                            {% if is_granted("ROLE_MEMBRES")%}
-                                <h4><a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a></h4>
-                            {% endif %}
-                        </div>
-                        {% for post in posts %}
-                            {% if is_granted("ROLE_MEMBRES")%}
-                                <div>
-                                    <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
-                                    <p>{{post.description}}</p>
+            {% endverbatim %}
+            {#            <section class="hide">
+                            <input class="col-lg-9" placeholder="Nom, auteur..."/>
+                            <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
+                        </section>
+                        <section class="container col-lg-12 hide">
+                            <div class="panel-group" >
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Grand T</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse1" class="panel-collapse collapse in">
+                                        <div class="panel-body" id="accordion">   
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sous T</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse2" class="panel-collapse collapse">
+                                                    <div class="panel-body">bla bla</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="collapse2" class="panel-collapse collapse in">
+                                        <div class="panel-body" id="accordion">   
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frere T</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse3" class="panel-collapse collapse">
+                                                    <div class="panel-body">bla bla</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            {% endif %}
-                        {% endfor %}
-                    </section>
-                {% endfor %}
-            {% endfor %}#}
+                            </div>
+                        </section>#}
+            {#            {% for theme in themes %}
+                            {% for theme in theme.kids %}
+                                <section class="section">
+                                    <div class="col-lg-12">
+                                        <h4 class="col-lg-5">{{theme.title}}</h4>
+                                        {% if is_granted("ROLE_MEMBRES")%}
+                                            <h4><a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a></h4>
+                                        {% endif %}
+                                    </div>
+                                    {% for post in posts %}
+                                        {% if is_granted("ROLE_MEMBRES")%}
+                                            <div>
+                                                <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
+                                                <p>{{post.description}}</p>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </section>
+                            {% endfor %}
+                        {% endfor %}#}
             {% if is_granted("ROLE_MEMBRES")%}
-{#                <a href='{{path('theme')}}'>ajout thème</a>#}
+                {#                <a href='{{path('theme')}}'>ajout thème</a>#}
             {% endif %}
         </div>
     </section>

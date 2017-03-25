@@ -36,8 +36,7 @@ class Theme implements JsonSerializable
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-
-
+    
     /**
      * Get id
      *

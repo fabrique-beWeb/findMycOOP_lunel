@@ -7,6 +7,11 @@
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('./vendor/bootstrap.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+            <script src="{{asset('scripts/angular.min.js')}}"></script>
+            <script src="{{asset('scripts/projects.js')}}"></script>
+            <script src="{{asset('scripts/jQuery.js')}}"></script>
+            <script src="{{asset('scripts/main.js')}}"></script>
+            <script src="{{asset('scripts/bootstrap.js')}}"></script>
         {% endblock %}
     </head>
     <body>
@@ -83,10 +88,6 @@
     <footer class="text-center">
         <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
     </footer>
-    <script src="{{asset('scripts/angular.min.js')}}"></script>
-    <script src="{{asset('scripts/projects.js')}}"></script>
-    <script src="{{asset('scripts/jQuery.js')}}"></script>
-    <script src="{{asset('../vendor/twbs/bootstrap/dist/js/bootstrap.js')}}"></script>
-    <script src="{{asset('scripts/main.js')}}"></script>
+
 </body>
 </html>
