@@ -3,9 +3,9 @@ var monAppli = angular.module('project', []);
 monAppli.controller('projectCtrl', [
     '$scope', '$http', function ($scope, $http) {
         
-        $scope.projects = [];
+        $scope.projects = {};
         
-        $http.get("http:///www.findmycoop.fr/projects")
+        $http.get("projects")
                 .then(function (response){
            $scope.projects = response.data; 
         });
