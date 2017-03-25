@@ -7,9 +7,14 @@
 - PHP 7
 - mySQL 5.7
 - phpmyadmin 4.6
+- angularJS
+- ajax
 
 ## Collaborateurs:  
 
+Qais Amini
+François Flachet
+Romain Ruperez
 Angie Browne  
 Mathieu Becerra  
 Sébastien Javary 
