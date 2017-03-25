@@ -12,9 +12,9 @@
 
 ## Collaborateurs:  
 
-Qais Amini
-François Flachet
-Romain Ruperez
+Qais Amini  
+François Flachet  
+Romain Ruperez  
 Angie Browne  
 Mathieu Becerra  
 Sébastien Javary 
