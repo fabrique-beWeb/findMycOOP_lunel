@@ -1,5 +1,8 @@
 {% extends ':site:home.html.twig' %}
-
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/projects.css') }}" />
+{% endblock %}
 {% block body %}
     <section>
         <div class="col-lg-8 , section">
@@ -7,8 +10,38 @@
             {% verbatim %}
                 <div ng-app="project">
                     <div ng-controller="projectCtrl">
-                       <!--<h2>{{projects}}</h2> -->
-                        <div class="text-center" ng-repeat="project in projects">{{project.id}} {{project.title}}</div>
+                        <div  ng-repeat="theme in themes" ng-click="getSousThemesT(sousTheme.fktheme.id)">
+                            <h4 class="theme">
+                                THEME :{{theme.title}}
+                            </h4>
+                        </div>
+                        <div class="text-center" ng-repeat="sousTheme in sousThemes" ng-click="getSousThemesT(sousTheme.fktheme.id)" ng-show="showSousThemes">
+                            <h4 class="soustheme">
+                                SOUS THEME :{{sousTheme.title}} {{sousTheme.fktheme.id}}
+                        </div>
+                        <div class="text-center" ng-repeat="project in projects" ng-click="getTasks()" ng-show="showProjects">
+                            <h5 class="projects">
+                                PROJECTS :
+                                {{project.id}} 
+                                {{project.title}}
+                                {{project.sousTheme}}
+                                {{project.userBoss}}
+                                {{project.userColab}}
+                                {{project.text}}
+                            </h5>Domotique
+                        </div>
+                        <div class="text-center" ng-click="getPosts()" ng-show="showTasks()" ng-repeat="task in tasks">
+                            <h6 class="tasks">
+                                TASKS :{{task.title}}
+                            </h6>
+                        </div>
+                        <div class="text-center" ng-repeat="post in posts">
+                            <h6 class="posts">
+                            POSTS :
+                            {{post.title}}
+                            {{post.text}}
+                            </h6>
+                        </div>
 
                     </div>
                 </div>

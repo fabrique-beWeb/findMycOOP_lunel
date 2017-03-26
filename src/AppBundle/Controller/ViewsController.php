@@ -104,11 +104,19 @@ class ViewsController extends Controller {
     }
 
     /**
-     * @Route("/sous-theme", name="sousTheme")
+     * @Route("/sousTheme", name="sousTheme")
      * @Method({"GET"})
      */
     public function getSousTheme(){
         $sousTheme = $this->getDoctrine()->getRepository(SousTheme::class)->findAll();
+        return new JsonResponse($sousTheme);
+    }
+    /**
+     * @Route("/sousTheme/{id}", name="sousThemeFromTheme")
+     * @Method({"GET"})
+     */
+    public function getSousThemeFromTheme($id){
+        $sousTheme = $this->getDoctrine()->getRepository(SousTheme::class)->findByFktheme($id);
         return new JsonResponse($sousTheme);
     }
     

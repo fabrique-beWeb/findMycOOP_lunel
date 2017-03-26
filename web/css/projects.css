@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 26, 2017, 10:46:14 PM
+    Author     : ruperez
+*/
+
+.theme{
+    position: relative;
+    border: 1px solid white;
+    margin: 0;
+    padding:5%;
+    background-color: rgba(28,127,35,0.6);
+    
+}
+
+.soustheme{
+    position: relative;
+    border: 1px solid white;
+    margin: 0;
+    padding: 4%;
+    background-color: rgba(28,127,35,0.3);
+    
+}
+
+.projects{
+    position: relative;
+    border: 1px solid white;
+    margin: 0;
+    padding: 3%;
+    background-color: rgba(28,127,35,0.2);
+    
+}
+
+.tasks{
+    position: relative;
+    border: 1px solid white;
+    margin: 0;
+    padding: 2%;
+    background-color: rgba(28,127,35,0.2);
+    
+}
+.posts{
+    position: relative;
+    border: 1px solid white;
+    margin: 0;
+    padding: 1%;
+    background-color: rgba(28,127,35,0.2);
+    
+}
