@@ -7,6 +7,7 @@ monAppli.controller('projectCtrl', [
         $scope.showSousThemes = true;
         $scope.showProjects = false;
         $scope.showTasks = false;
+        $scope.showPosts = false;
 
         $scope.themes = {};
         $http.get("themes")
@@ -43,6 +44,15 @@ monAppli.controller('projectCtrl', [
                     });
         };
 
+        $scope.getProjectsFromSousTheme = function (id) {
+            $http.get("projects/" + id)
+                    .then(function (response) {
+                        $scope.showSousThemes = true;
+                        $scope.showProjects = true;
+                        $scope.projects = response.data;
+                    });
+        };
+
 //        $scope.topics = [];
 //        $scope.getTopics = function () {
 //            $http.get("http:///www.findmycoop.fr/topics")
@@ -51,9 +61,17 @@ monAppli.controller('projectCtrl', [
 //                    });
 //        };
 
-        $scope.tasks = [];
+        $scope.tasks = {};
         $scope.getTasks = function () {
             $http.get("tasks")
+                    .then(function (response) {
+                        $scope.showTasks = true;
+                        $scope.tasks = response.data;
+                    });
+        };
+
+        $scope.getTasksFromProject = function (id) {
+            $http.get("tasks/" + id)
                     .then(function (response) {
                         $scope.showTasks = true;
                         $scope.tasks = response.data;
@@ -67,6 +85,18 @@ monAppli.controller('projectCtrl', [
 
                     .then(function (response) {
                         $scope.showTasks = true;
+                        $scope.showPosts = true;
+                        $scope.posts = response.data;
+                    }
+                    );
+        };
+
+        $scope.getPostsFromTask = function (id) {
+            $http.get("posts/" + id)
+
+                    .then(function (response) {
+                        $scope.showTasks = true;
+                        $scope.showPosts = true;
                         $scope.posts = response.data;
                     }
                     );

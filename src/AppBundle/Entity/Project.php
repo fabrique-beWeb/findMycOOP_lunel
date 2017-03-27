@@ -123,7 +123,7 @@ class Project implements JsonSerializable
     public function jsonSerialize() {
         return array(
           "id" => $this->id,  
-          "sousTheme" => $this->fksousTheme->getTitle(),  
+          "sousTheme" => $this->fksousTheme,  
           "userBoss" => $this->fkuserBoss->getName(),  
           "userColab" => $this->fkuserColab->getName(),  
           "title" => $this->title,  

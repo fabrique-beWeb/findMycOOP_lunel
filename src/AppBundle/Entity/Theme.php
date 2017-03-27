@@ -3,6 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 use JsonSerializable;
 
 /**
@@ -11,9 +14,8 @@ use JsonSerializable;
  * @ORM\Table(name="theme")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ThemeRepository")
  */
-class Theme implements JsonSerializable
-{
-    
+class Theme implements JsonSerializable {
+
     /**
      * @var int
      *
@@ -22,7 +24,7 @@ class Theme implements JsonSerializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -36,14 +38,13 @@ class Theme implements JsonSerializable
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-    
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +55,7 @@ class Theme implements JsonSerializable
      *
      * @return Theme
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -66,8 +66,7 @@ class Theme implements JsonSerializable
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -78,8 +77,7 @@ class Theme implements JsonSerializable
      *
      * @return Theme
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -90,8 +88,7 @@ class Theme implements JsonSerializable
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -104,4 +101,3 @@ class Theme implements JsonSerializable
     }
 
 }
-
