@@ -12,12 +12,16 @@
                     <div ng-controller="projectCtrl">
                         <div  ng-repeat="theme in themes" ng-click="getSousThemesT(theme.id)">
                             <h4 class="theme">
-                                THEME :{{theme.title}}
+                                THEME :
+                                {{theme.title}}
                             </h4>
                         </div>
                         <div class="text-center" ng-repeat="sousTheme in sousThemes" ng-click="getProjectsFromSousTheme(sousTheme.id)" ng-show="showSousThemes">
                             <h4 class="soustheme">
-                                SOUS THEME :{{sousTheme.title}} {{sousTheme.fktheme.id}}
+                                SOUS THEME :
+                                {{sousTheme.title}} 
+                                {{sousTheme.fktheme.id}}
+                            </h4>
                         </div>
                         <div class="text-center" ng-repeat="project in projects" ng-click="getTasksFromProject(project.id)" ng-show="showProjects">
                             <h5 class="projects">
