@@ -1,4 +1,4 @@
-var monAppli = angular.module('project', []);
+var monAppli = angular.module('project', ['vAccordion', 'ngAnimate']);
 
 monAppli.controller('projectCtrl', [
     '$scope', '$http', function ($scope, $http) {
