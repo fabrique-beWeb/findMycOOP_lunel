@@ -8,32 +8,25 @@
             <h2 class="text-center">Carnet de bord</h2>
         </div>
         <section id="projet">
-{#            {% for post in posts %}
-                <div class="last">
-                    <h3>{{post.title}}</h3>
-                    <h4 class="text-center">Last activités</h4>
-                    <p class="text-justify">{{post.description}}</p>
-                    <a href="{{path('forum',{'id':post.id })}}"><button class="col-lg-offset-9 col-lg-3">Details</button></a>
-                </div>
-            {% endfor %}#}
+            dsqsqdsqd
+            {#            {% for post in posts %}
+                            <div class="last">
+                                <h3>{{post.title}}</h3>
+                                <h4 class="text-center">Last activités</h4>
+                                <p class="text-justify">{{post.description}}</p>
+                                <a href="{{path('forum',{'id':post.id })}}"><button class="col-lg-offset-9 col-lg-3">Details</button></a>
+                            </div>
+                        {% endfor %}#}
         </section>
         <section id="message">
-            {% for mail in mails %}
-                <div class="messages">
-                    <h3>From: {{mail.author}}</h3>
-                    <h4>object: {{mail.subject}}</h4>
-                    {#                    {% if mail.seen is checked%}#}
-                    <p>R (R = non lu)</p>
-                    {#                    {% endif %}#}
-                    <p>{{mail.subject}}</p>
-                    <a href="{{path('forum',{'id':mail.id })}}"><button class="col-lg-offset-10">Repondre</button></a>
-                </div>
-            {% endfor %}
         </section>
         <section id="profil">
             <div>
                 <h4>Profil:</h4>
-                <div class="col-lg-6 profil">
+                <div id="editProfil" class="col-lg-6 profil">
+{#                    {{form_start(edit_form)}}
+                    <input type="submit" class="btn btn-info btn-sm text-position col-md-offset-0 col-md-1 colorbouttton pull-right"value="Edit" />
+                    {{form_end(edit_form)}}#}
                     <input class="col-lg-9"placeholder="Nom"/>
                     <input class="col-lg-9"placeholder="Prenom"/>
                     <input class="col-lg-9"placeholder="Pseudo"/>

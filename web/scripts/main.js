@@ -16,7 +16,7 @@ $(document).ready(function () {
         var mail = $(".email").val();
         var subject = $(".sujet").val();
         var message = $(".message").val();
-        alert(mail)
+        alert(mail);
         $.ajax({
             url: "/envoieMail",
             data: {"mail": mail, "sujet": subject, "message": message},
@@ -68,13 +68,9 @@ $(".trio > li").click(function () {
     }
     var id = $(this).attr("id");
     pageShow.hide();
-    btnSelect.css({marginLeft: 20 + "px", color: "white", backgroundColor: "darkslategrey"});
+    btnSelect.css({marginLeft: 20 + "px", color: "white", backgroundColor: "darkslategrey", transition:"0.5s"});
     $(".trio > li[id =" + id + "").css({marginLeft: 0 + "px", color: "darkslategrey", backgroundColor: "white"});
     $(".carnet > section[id=" + id + "]").show();
     pageShow = $(".carnet > section[id=" + id + "]");
     btnSelect = $(".trio > li[id =" + id + "");
-});
-
-$(function(){
-   $('#default').puiaccordion(); 
 });

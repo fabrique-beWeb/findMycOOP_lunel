@@ -8,13 +8,10 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Post;
-use AppBundle\Entity\Theme;
 use AppBundle\Entity\User;
-use AppBundle\Form\PostType;
-use AppBundle\Form\ThemeType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -51,5 +48,22 @@ class CrudUserController extends Controller {
         }
         return $this->redirectToRoute('user', array('formUser' => $formUser->createView()));
     }
-    
+
+    /**
+     * @Route("/carnet/{id}",name ="editprofil")
+     */
+    public function editProfil(Request $request, User $user) {
+//        $deleteForm = $this->createDeleteForm($candidat);
+        $editForm = $this->createForm(UserType::class, $user);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+//            return $this->redirectToRoute('profil.html.twig');
+        }
+        return $this->render('membres/carnetDeBord.html.twig', array(
+                    'user' => $user,
+                    'edit_form' => $editForm->createView(),
+        ));
+    }
+
 }

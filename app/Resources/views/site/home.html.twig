@@ -4,20 +4,20 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Find My cOOp{% endblock %}</title>
         {% block stylesheet %}
-            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-            <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('css/primeui.min.css') }}" />
-            <script src="{{asset('scripts/jQuery.js')}}"></script>
-            <script src="{{asset('scripts/jquery-ui.min.js')}}"></script>
-            <script src="{{asset('scripts/angular.min.js')}}"></script>
-            <script src="{{asset('scripts/x-tag-core.min.js')}}"></script>
-            <script src="{{asset('scripts/primeui.min.js')}}"></script>
-            <script src="{{asset('scripts/primeelements.js')}}"></script>
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('./vendor/bootstrap.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+            <script src="{{asset('scripts/angular.min.js')}}"></script>
             <script src="{{asset('scripts/projects.js')}}"></script>
-            <script src="{{asset('scripts/bootstrap.js')}}"></script>
-            <script src="{{asset('scripts/main.js')}}"></script>
+
+            {#            <script src="{{asset('scripts/x-tag-core.min.js')}}"></script>
+                        <script src="{{asset('scripts/primeui.min.js')}}"></script>
+                        <script src="{{asset('scripts/primeelements.js')}}"></script>
+                        <link rel="stylesheet" href="{{ asset('./vendor/bootstrap.css') }}" />
+                        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+                        <script src="{{asset('scripts/projects.js')}}"></script>
+                        <script src="{{asset('scripts/bootstrap.js')}}"></script>
+                        <script src="{{asset('scripts/main.js')}}"></script>#}
         {% endblock %}
     </head>
     <body>
@@ -93,7 +93,9 @@
     </div>
 
 
-
+            <script src="{{asset('scripts/jQuery.js')}}"></script>
+            <script src="{{asset('scripts/main.js')}}"></script>
+            <script src="{{asset('scripts/bootstrap.js')}}"></script>
     <footer class="text-center">
         <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
     </footer>
