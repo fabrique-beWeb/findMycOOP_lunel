@@ -74,3 +74,7 @@ $(".trio > li").click(function () {
     pageShow = $(".carnet > section[id=" + id + "]");
     btnSelect = $(".trio > li[id =" + id + "");
 });
+
+$(function(){
+   $('#default').puiaccordion(); 
+});

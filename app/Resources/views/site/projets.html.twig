@@ -10,6 +10,39 @@
             {% verbatim %}
                 <div ng-app="project">
                     <div ng-controller="projectCtrl">
+                        <p-accordion>
+                            <p-tab title="ok">
+                                <p-accordion>
+                                    <p-tab title="sous theme">
+                                        <p-accordion>
+                                            <p-tab title="projects">
+                                                <p-accordion>
+                                                    <p-tab title="tasks">
+                                                        <p-accordion>
+                                                            <p-tab title="Posts">
+                                                                Tab Content 1
+                                                            </p-tab>
+                                                            <p-tab title="Title for tab 2">
+                                                                Tab Content 2
+                                                            </p-tab>
+                                                        </p-accordion>
+                                                    </p-tab>
+                                                    <p-tab title="Title for tab 2">
+                                                        Tab Content 2
+                                                    </p-tab>
+                                                </p-accordion>
+                                            </p-tab>
+                                            <p-tab title="Title for tab 2">
+                                                Tab Content 2
+                                            </p-tab>
+                                        </p-accordion>
+                                    </p-tab>
+                                    <p-tab title="Title for tab 2">
+                                        Tab Content 2
+                                    </p-tab>
+                                </p-accordion>
+                            </p-tab>
+                        </p-accordion>
                         <div  ng-repeat="theme in themes" ng-click="getSousThemesT(theme.id)">
                             <h4 class="theme">
                                 THEME :
@@ -40,9 +73,9 @@
                         </div>
                         <div class="text-center" ng-repeat="post in posts" ng-show="showPosts">
                             <h6 class="posts">
-                            POSTS :
-                            {{post.title}}
-                            {{post.text}}
+                                POSTS :
+                                {{post.title}}
+                                {{post.text}}
                             </h6>
                         </div>
 
