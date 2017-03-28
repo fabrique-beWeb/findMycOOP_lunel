@@ -19,7 +19,7 @@ monAppli.controller('projectCtrl', [
 
 
         $scope.sousThemes = {};
-        $scope.getSousThemesT = function (id) {
+        $scope.getSousThemesFromTheme = function (id) {
             $http.get("sousTheme/" + id)
                     .then(function (response) {
                         $scope.showSousThemes = true;
