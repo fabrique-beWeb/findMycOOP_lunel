@@ -33,24 +33,26 @@
 
                                                         </v-pane-header>
                                                         <v-pane-content>
-                                                            <v-pane ng-repeat="task in tasks">
-                                                                <v-pane-header ng-click="getPostsFromTask(task.id)">
-                                                                    {{ ::task.title}}
-                                                                </v-pane-header>
-                                                                <v-pane-content>
-                                                                    <v-accordion>
-                                                                        <v-pane ng-repeat="post in posts">
-                                                                            <v-pane-header>
-                                                                                {{ ::post.title}}
-
-                                                                            </v-pane-header>
-                                                                            <v-pane-content>
-                                                                                {{ ::post.text}}
-                                                                            </v-pane-content>
-                                                                        </v-pane>
-                                                                    </v-accordion>
-                                                                </v-pane-content>
-                                                            </v-pane>
+                                                            <v-accordion>
+                                                                <v-pane ng-repeat="task in tasks">
+                                                                    <v-pane-header ng-click="getPostsFromTask(task.id)">
+                                                                        {{ ::task.title}}
+                                                                    </v-pane-header>
+                                                                    <v-pane-content>
+                                                                        <v-accordion>
+                                                                            <v-pane ng-repeat="post in posts">
+                                                                                <v-pane-header>
+                                                                                    <p>Auteur : {{ ::post.user}} 
+                                                                                    {{ ::post.title}}</p>
+                                                                                </v-pane-header>
+                                                                                <v-pane-content>
+                                                                                    {{ ::post.text}}
+                                                                                </v-pane-content>
+                                                                            </v-pane>
+                                                                        </v-accordion>
+                                                                    </v-pane-content>
+                                                                </v-pane>
+                                                            </v-accordion>    
                                                         </v-pane-content>
                                                     </v-pane>
                                                 </v-accordion>

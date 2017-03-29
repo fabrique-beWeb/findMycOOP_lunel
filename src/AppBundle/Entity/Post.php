@@ -155,7 +155,7 @@ class Post implements JsonSerializable
         return array (
             "id"=> $this->id,
             "fktopic"=> $this->fktopic,
-            "user"=> $this->fkuser,
+            "user"=> $this->fkuser->getName(),
             "task"=> $this->fktask,
             "title"=> $this->title,
             "text"=> $this->text,
