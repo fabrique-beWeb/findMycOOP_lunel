@@ -11,7 +11,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -60,7 +59,7 @@ class CrudUserController extends Controller {
             $this->getDoctrine()->getManager()->flush();
 //            return $this->redirectToRoute('profil.html.twig');
         }
-        return $this->render('membres/carnetDeBord.html.twig', array(
+        return $this->render(':membres:editProfil.html.twig', array(
                     'user' => $user,
                     'edit_form' => $editForm->createView(),
         ));

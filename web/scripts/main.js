@@ -74,3 +74,8 @@ $(".trio > li").click(function () {
     pageShow = $(".carnet > section[id=" + id + "]");
     btnSelect = $(".trio > li[id =" + id + "");
 });
+
+$(".trio > li[id = profil]").click(function (id) {
+    alert('ok');
+    window.location = "http://www.findmycoop.fr/carnet/" + id;
+});
