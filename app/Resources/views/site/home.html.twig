@@ -6,8 +6,11 @@
         {% block stylesheet %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
             <link rel="stylesheet" href="{{ asset('./vendor/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/v-accordion.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
             <script src="{{asset('scripts/angular.min.js')}}"></script>
+            <script src="{{asset("//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.js")}}"></script>
+            <script src="{{asset('scripts/v-accordion.min.js')}}"></script>
             <script src="{{asset('scripts/projects.js')}}"></script>
 
             {#            <script src="{{asset('scripts/x-tag-core.min.js')}}"></script>

@@ -10,144 +10,124 @@
             {% verbatim %}
                 <div ng-app="project">
                     <div ng-controller="projectCtrl">
-                        <p-accordion>
-                            <p-tab title="ok">
-                                <p-accordion>
-                                    <p-tab title="sous theme">
-                                        <p-accordion>
-                                            <p-tab title="projects">
-                                                <p-accordion>
-                                                    <p-tab title="tasks">
-                                                        <p-accordion>
-                                                            <p-tab title="Posts">
-                                                                Tab Content 1
-                                                            </p-tab>
-                                                            <p-tab title="Title for tab 2">
-                                                                Tab Content 2
-                                                            </p-tab>
-                                                        </p-accordion>
-                                                    </p-tab>
-                                                    <p-tab title="Title for tab 2">
-                                                        Tab Content 2
-                                                    </p-tab>
-                                                </p-accordion>
-                                            </p-tab>
-                                            <p-tab title="Title for tab 2">
-                                                Tab Content 2
-                                            </p-tab>
-                                        </p-accordion>
-                                    </p-tab>
-                                    <p-tab title="Title for tab 2">
-                                        Tab Content 2
-                                    </p-tab>
-                                </p-accordion>
-                            </p-tab>
-                        </p-accordion>
-                        <div  ng-repeat="theme in themes" ng-click="getSousThemesT(theme.id)">
-                            <h4 class="theme">
-                                THEME :
-                                {{theme.title}}
-                            </h4>
-                        </div>
-                        <div class="text-center" ng-repeat="sousTheme in sousThemes" ng-click="getProjectsFromSousTheme(sousTheme.id)" ng-show="showSousThemes">
-                            <h4 class="soustheme">
-                                SOUS THEME :
-                                {{sousTheme.title}} 
-                                {{sousTheme.fktheme.id}}
-                            </h4>
-                        </div>
-                        <div class="text-center" ng-repeat="project in projects" ng-click="getTasksFromProject(project.id)" ng-show="showProjects">
-                            <h5 class="projects">
-                                PROJECTS :
-                                {{project.id}} 
-                                {{project.title}}
-                                {{project.userBoss}}
-                                {{project.userColab}}
-                                {{project.text}}
-                            </h5>
-                        </div>
-                        <div class="text-center" ng-click="getPostsFromTask(task.id)" ng-show="showTasks" ng-repeat="task in tasks">
-                            <h6 class="tasks">
-                                TASKS :{{task.title}}
-                            </h6>
-                        </div>
-                        <div class="text-center" ng-repeat="post in posts" ng-show="showPosts">
-                            <h6 class="posts">
-                                POSTS :
-                                {{post.title}}
-                                {{post.text}}
-                            </h6>
-                        </div>
+                        <v-accordion class="vAccordion--default">
 
-                    </div>
-                </div>
-            {% endverbatim %}
-            {#            <section class="hide">
-                            <input class="col-lg-9" placeholder="Nom, auteur..."/>
-                            <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
-                        </section>
-                        <section class="container col-lg-12 hide">
-                            <div class="panel-group" >
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Grand T</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapse1" class="panel-collapse collapse in">
-                                        <div class="panel-body" id="accordion">   
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sous T</a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapse2" class="panel-collapse collapse">
-                                                    <div class="panel-body">bla bla</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="collapse2" class="panel-collapse collapse in">
-                                        <div class="panel-body" id="accordion">   
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frere T</a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapse3" class="panel-collapse collapse">
-                                                    <div class="panel-body">bla bla</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>#}
-            {#            {% for theme in themes %}
-                            {% for theme in theme.kids %}
-                                <section class="section">
-                                    <div class="col-lg-12">
-                                        <h4 class="col-lg-5">{{theme.title}}</h4>
-                                        {% if is_granted("ROLE_MEMBRES")%}
-                                            <h4><a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a></h4>
-                                        {% endif %}
-                                    </div>
-                                    {% for post in posts %}
-                                        {% if is_granted("ROLE_MEMBRES")%}
-                                            <div>
-                                                <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
-                                                <p>{{post.description}}</p>
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
+                            <v-pane ng-repeat="theme in themes"  expanded="pane.isExpanded">
+                                <v-pane-header ng-click="getSousThemesFromTheme(theme.id)">
+                                    {{ ::theme.title}}
+                                </v-pane-header>
+
+                                <v-pane-content>
+
+                                    <!-- accordions can be nested :) -->
+                                    <v-accordion >
+                                        <v-pane ng-repeat="sousTheme in sousThemes">
+                                            <v-pane-header ng-click="getProjectsFromSousTheme(sousTheme.id)" >
+                                                {{ ::sousTheme.title}}
+                                            </v-pane-header>
+                                            <v-pane-content>
+                                                <v-accordion>
+                                                    <v-pane ng-repeat="project in projects">
+                                                        <v-pane-header ng-click="getTasksFromProject(project.id)">
+                                                            {{ ::project.title}}
+
+                                                        </v-pane-header>
+                                                        <v-pane-content>
+                                                            <v-pane ng-repeat="task in tasks">
+                                                                <v-pane-header ng-click="getPostsFromTask(task.id)">
+                                                                    {{ ::task.title}}
+                                                                </v-pane-header>
+                                                                <v-pane-content>
+                                                                    <v-accordion>
+                                                                        <v-pane ng-repeat="post in posts">
+                                                                            <v-pane-header>
+                                                                                {{ ::post.title}}
+
+                                                                            </v-pane-header>
+                                                                            <v-pane-content>
+                                                                                {{ ::post.text}}
+                                                                            </v-pane-content>
+                                                                        </v-pane>
+                                                                    </v-accordion>
+                                                                </v-pane-content>
+                                                            </v-pane>
+                                                        </v-pane-content>
+                                                    </v-pane>
+                                                </v-accordion>
+                                            </v-pane-content>
+                                        </v-pane>
+                                    </v-accordion>
+                                </v-pane-content>
+                            </v-pane>
+
+                        </v-accordion>
+                    {% endverbatim %}
+                    {#            <section class="hide">
+                                    <input class="col-lg-9" placeholder="Nom, auteur..."/>
+                                    <input class="col-lg-offset-1 col-lg-2" type="submit" value="Recherche"/>
                                 </section>
-                            {% endfor %}
-                        {% endfor %}#}
-            {% if is_granted("ROLE_MEMBRES")%}
-                {#                <a href='{{path('theme')}}'>ajout thème</a>#}
-            {% endif %}
-        </div>
-    </section>
-{% endblock %}
+                                <section class="container col-lg-12 hide">
+                                    <div class="panel-group" >
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Grand T</a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse1" class="panel-collapse collapse in">
+                                                <div class="panel-body" id="accordion">   
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Sous T</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapse2" class="panel-collapse collapse">
+                                                            <div class="panel-body">bla bla</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapse2" class="panel-collapse collapse in">
+                                                <div class="panel-body" id="accordion">   
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Frere T</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="collapse3" class="panel-collapse collapse">
+                                                            <div class="panel-body">bla bla</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>#}
+                    {#            {% for theme in themes %}
+                                    {% for theme in theme.kids %}
+                                        <section class="section">
+                                            <div class="col-lg-12">
+                                                <h4 class="col-lg-5">{{theme.title}}</h4>
+                                                {% if is_granted("ROLE_MEMBRES")%}
+                                                    <h4><a href='{{path('validTheme',{'id':theme.id })}}'>éditer thème</a></h4>
+                                                {% endif %}
+                                            </div>
+                                            {% for post in posts %}
+                                                {% if is_granted("ROLE_MEMBRES")%}
+                                                    <div>
+                                                        <a class="" href='{{path('forum',{'id':post.id })}}'><h4>{{post.title}}</h4></a>
+                                                        <p>{{post.description}}</p>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </section>
+                                    {% endfor %}
+                                {% endfor %}#}
+                    {% if is_granted("ROLE_MEMBRES")%}
+                        {#                <a href='{{path('theme')}}'>ajout thème</a>#}
+                    {% endif %}
+                </div>
+                </section>
+            {% endblock %}
