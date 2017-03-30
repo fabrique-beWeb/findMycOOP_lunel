@@ -8,12 +8,14 @@ use AppBundle\Entity\SousTheme;
 use AppBundle\Entity\Task;
 use AppBundle\Entity\Theme;
 use AppBundle\Entity\Topic;
+use AppBundle\Entity\User;
 use AppBundle\Form\MailType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class ViewsController extends Controller {
 
@@ -80,12 +82,15 @@ class ViewsController extends Controller {
         $formUser = $this->createForm(UserType::class, $u);
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findByReceiver($this->getUser());
+//        $user = $this->getUser();
+//        $userId = $user->getId();
 //        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByUser($this->getUser());
         $activities = $this->getDoctrine()->getRepository('AppBundle:Project')->findAll();
 
         return $this->render(':membres:carnetDeBord.html.twig', array(
 //                    'activities' => $activities,
-                    'users' => $users,
+//                    'id' => $userId,
+//                    'users' => $users,
                     'mails' => $mails,
                     'formUser' => $formUser,
                     'activities' => $activities
@@ -188,23 +193,16 @@ class ViewsController extends Controller {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findByFktask($id);
         return new JsonResponse($posts);
     }
-
+    
     /**
-     * @Route("/projects/{id}")
-     * @Method({"POST"})
-     * @param Request $r
+     * @Route("/carnet/get/profile",name ="editprofil")
      */
-    public function addProjects(Request $r, $id) {
-        $project = new Project();
-        $doctrine = $this->getDoctrine();
-        $project->setSousTheme($doctrine->getRepository(SousTheme::class)->find($id));
-        $project->setUserBoss($doctrine->getRepository(Project::class)->find($r->get("userBoss")));
-        $project->setUserColab($doctrine->getRepository(Project::class)->find($r->get("userColab")));
-//        $copy->setPrice($r->get("price"));
-        $em = $doctrine->getManager();
-        $em->persist($project);
-        $em->flush();
-        return new JsonResponse($project);
-    }
+    public function getEditProfil() {
+                $users = $this->getUser();
+        $userId = $users->getId();
+        $user = $this->getDoctrine()->getRepository(User::class)->find($userId);
+        return new JsonResponse($user);
 
+    }    
+    
 }
