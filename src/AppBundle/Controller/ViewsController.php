@@ -15,7 +15,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 class ViewsController extends Controller {
 
@@ -24,8 +23,7 @@ class ViewsController extends Controller {
      */
     public function getHome() {
         $home = $this->getDoctrine()->getRepository('AppBundle:Project')->findById(1);
-        $activities = $this->getDoctrine()->getRepository('AppBundle:Project')->findAll();
-        return $this->render(':site:home.html.twig', array('description' => $home, 'activities' => $activities));
+        return $this->render(':site:home.html.twig',array("text"=>$home));
 //        return $this->render(':site:home.html.twig');
     }
 
@@ -33,8 +31,7 @@ class ViewsController extends Controller {
      * @Route("/projets", name="projets")
      */
     public function getProjetPage() {
-        $activities = $this->getDoctrine()->getRepository('AppBundle:Project')->findAll();
-        return $this->render(':site:projets.html.twig', array('activities' => $activities));
+        return $this->render(':site:projets.html.twig');
 //        return $this->render(':site:home.html.twig');
     }
 
@@ -49,11 +46,9 @@ class ViewsController extends Controller {
      * @Route("/membres", name="membres")
      */
     public function getMembresPage() {
-        $activities = $this->getDoctrine()->getRepository('AppBundle:Project')->findAll();
         $membres = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         return $this->render(':site:membres.html.twig', array(
-                    'membres' => $membres,
-                    'activities' => $activities
+                    'membres' => $membres
         ));
     }
 
@@ -93,7 +88,6 @@ class ViewsController extends Controller {
 //                    'users' => $users,
                     'mails' => $mails,
                     'formUser' => $formUser,
-                    'activities' => $activities
         ));
     }
 
@@ -203,6 +197,6 @@ class ViewsController extends Controller {
         $user = $this->getDoctrine()->getRepository(User::class)->find($userId);
         return new JsonResponse($user);
 
-    }    
+    }
     
 }

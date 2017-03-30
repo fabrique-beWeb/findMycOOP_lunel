@@ -57,6 +57,8 @@ $(window).load(function () {
     pageShow = $(".carnet > section[id = projet]").show();
 });
 
+// scroll activities section
+
 $(window).scroll(function () {
     var newPosition = positionBase - $("body").scrollTop();
     if ($("body").scrollTop() < $("nav").height() + $("header").height()) {
@@ -163,3 +165,33 @@ $(".trio > li[id = profil]").click(function (e) {
     }
     ;
 });
+// ajax call for the activities
+//function refreshEvents() {
+//    $().ready(function () {
+//
+//        $.ajax({
+//            type: 'GET',
+//            async: true,
+//            dataType: 'json',
+//            url: "http://www.findmycoop.fr/projets",
+//            data:
+//                    {
+////                    "activity.id": project.id,
+//                        "project.title": $("#activityTitle").val(),
+//                        "project.text": $("#activityText").val(),
+//                        "project.datetime": $("#projectDate").val()
+//
+//                    },
+//            success: function (data, textStatus, jqXHR) {
+//
+//                $("#activityTitle").val(data.title);
+//                $("#activityText").val(data.text);
+//                $("#activityDate").val(data.datetime);
+//
+//            }
+//        });
+//
+//
+//    }
+//    );
+//}

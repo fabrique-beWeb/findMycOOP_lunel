@@ -26,11 +26,10 @@
                                                 <h4>{{ ::sousTheme.title}}</h4>
                                             </v-pane-header>
                                             <v-pane-content>
-                                                ICI FORM ADD PROJECT
                                                 <v-accordion>
                                                     <v-pane ng-repeat="project in projects">
-                                                        <v-pane-header ng-click="getTasksFromProject(project.id)">
-                                                            {{ ::project.title}}
+                                                        <v-pane-header ng-bind="project.title" ng-click="getTasksFromProject(project.id)">
+                                                            
                                                         </v-pane-header>
                                                         <v-pane-content>
                                                             <v-accordion>

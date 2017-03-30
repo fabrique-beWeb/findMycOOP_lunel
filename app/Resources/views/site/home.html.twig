@@ -48,9 +48,9 @@
                 <section>
                     <div class="col-lg-8 section ">
                         <h2 class="text-center">Presentation</h2>
-                        {#                        {% for presentation in description %}
-                                                    <p>{{presentation.description}}</p>
-                                                {% endfor %}#}
+                        {% for presentation in text %}
+                            <p>{{presentation.text}}</p>
+                        {% endfor %}
                     </div>
 
                 </section>
@@ -79,26 +79,32 @@
                                 <li id="profil">Mon profil</li>
                             </ul>
                         {% endif %}
-                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center hide" src="{{asset('image/up.png')}}"/></a>
-                                                {% for activity in activities %}
-                                                    <div class="postit">
-                                                        <p>{{activity.datetime|date('d/m/Y')}}</p>
-                                                        <h4 class="text-center">{{activity.title}}</h4>
-                                                        <p class="text-justify">{{activity.text}}</p>
-{#                                                        <a class="col-lg-offset-9 col-lg-3" href='{{path('projets',{'id':activity.id })}}'>détails</a>#}
-                                                    </div>
-                                                {% endfor %} 
-                        <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>
-                    </div>
+                        {% verbatim %}
+                            <div ng-app="project">
+                                <div ng-controller="projectCtrl">
+                                    <div class="postit" ng-repeat="project in projects | orderBy: '-id' | limitTo: 10">
+                                        Nouveau Projet :
+                                        <p ng-bind="project.date:'MM/dd/yyyy'"></p>
+                                        <h4 class="activityTitle" ng-bind="project.title"></h4>
+                                        
+
+
+                                        <!--<a class="col-lg-offset-9 col-lg-3" href='{{path('projets', {'id': activity.id})}}'>détails</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endverbatim %}
+                    {# <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>#}
                 </div>
             </section>
         {% endblock %}
     </div>
 
 
-            <script src="{{asset('scripts/jQuery.js')}}"></script>
-            <script src="{{asset('scripts/main.js')}}"></script>
-            <script src="{{asset('scripts/bootstrap.js')}}"></script>
+    <script src="{{asset('scripts/jQuery.js')}}"></script>
+    <script src="{{asset('scripts/main.js')}}"></script>
+    <script src="{{asset('scripts/bootstrap.js')}}"></script>
     <footer class="text-center">
         <p>&COPY;Copyright by <a href="http://fabrique-beweb.com/"/> BeWeb.</p>
     </footer>

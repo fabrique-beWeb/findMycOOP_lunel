@@ -1,4 +1,3 @@
-var currentSousTheme = null;
 var monAppli = angular.module('project', ['vAccordion', 'ngAnimate']);
 
 monAppli.controller('projectCtrl', [
@@ -36,7 +35,15 @@ monAppli.controller('projectCtrl', [
         };
 
         $scope.projects = {};
-        $scope.getProjects = function () {
+//        $scope.getProjects = function () {
+//            $http.get("projects")
+//                    .then(function (response) {
+//                        $scope.showSousThemes = true;
+//                        $scope.showProjects = true;
+//                        $scope.projects = response.data;
+//                    });
+//        };
+        getProjects = function () {
             $http.get("projects")
                     .then(function (response) {
                         $scope.showSousThemes = true;
@@ -44,6 +51,7 @@ monAppli.controller('projectCtrl', [
                         $scope.projects = response.data;
                     });
         };
+        setInterval(getProjects,1000);
 
         $scope.getProjectsFromSousTheme = function (id) {
             $http.get("projects/" + id)
@@ -102,16 +110,4 @@ monAppli.controller('projectCtrl', [
                     }
                     );
         };
-        
-        $scope.addProject = function (id) {
-            $http.post("projects/" + currentSousTheme.id)
-
-                    .then(function (response) {
-//                        $scope.showTasks = true;
-//                        $scope.showPosts = true;
-                        $scope.posts = response.data;
-                    }
-                    );
-        };
-        
     }]);

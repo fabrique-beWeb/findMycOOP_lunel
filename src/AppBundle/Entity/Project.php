@@ -11,8 +11,8 @@ use JsonSerializable;
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
  */
-class Project implements JsonSerializable
-{
+class Project implements JsonSerializable {
+
     /**
      * @var int
      *
@@ -21,31 +21,30 @@ class Project implements JsonSerializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SousTheme")
      * @ORM\JoinColumn(name="fk_sousTheme", referencedColumnName="id")
      */
-    private $fksousTheme;   
-    
-    
+    private $fksousTheme;
+
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="fk_userBoss", referencedColumnName="id")
      */
-    private $fkuserBoss;  
-    
+    private $fkuserBoss;
+
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="fk_userColab", referencedColumnName="id")
      */
-    private $fkuserColab;    
+    private $fkuserColab;
 
     /**
      * @var string
@@ -60,7 +59,7 @@ class Project implements JsonSerializable
      * @ORM\Column(name="text", type="string", length=255)
      */
     private $text;
-    
+
     /**
      * @var DateTime
      *
@@ -68,14 +67,12 @@ class Project implements JsonSerializable
      */
     private $datetime;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -86,8 +83,7 @@ class Project implements JsonSerializable
      *
      * @return Project
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -98,8 +94,7 @@ class Project implements JsonSerializable
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -110,8 +105,7 @@ class Project implements JsonSerializable
      *
      * @return Project
      */
-    public function setText($text)
-    {
+    public function setText($text) {
         $this->text = $text;
 
         return $this;
@@ -122,11 +116,10 @@ class Project implements JsonSerializable
      *
      * @return string
      */
-    public function getText()
-    {
+    public function getText() {
         return $this->text;
     }
-    
+
     /**
      * Set datetime
      *
@@ -134,8 +127,7 @@ class Project implements JsonSerializable
      *
      * @return Post
      */
-    public function setDatetime($datetime)
-    {
+    public function setDatetime($datetime) {
         $this->datetime = $datetime;
 
         return $this;
@@ -146,21 +138,20 @@ class Project implements JsonSerializable
      *
      * @return DateTime
      */
-    public function getDatetime()
-    {
+    public function getDatetime() {
         return $this->datetime;
     }
 
     public function jsonSerialize() {
         return array(
-          "id" => $this->id,  
-          "sousTheme" => $this->fksousTheme,  
-          "userBoss" => $this->fkuserBoss->getName(),  
-          "userColab" => $this->fkuserColab->getName(),  
-          "title" => $this->title,  
-          "text" => $this->text,  
+            "id" => $this->id,
+            "sousTheme" => $this->fksousTheme,
+            "userBoss" => $this->fkuserBoss->getName(),
+            "userColab" => $this->fkuserColab->getName(),
+            "title" => $this->title,
+            "text" => $this->text,
+            "date" => $this->datetime
         );
     }
 
 }
-
