@@ -26,7 +26,7 @@ class ViewsController extends Controller {
         return $this->render(':site:home.html.twig', array('description' => $home, 'activities' => $activities));
 //        return $this->render(':site:home.html.twig');
     }
-    
+
     /**
      * @Route("/projets", name="projets")
      */
@@ -78,9 +78,12 @@ class ViewsController extends Controller {
         $formUser = $this->createForm(UserType::class, $u);
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findByReceiver($this->getUser());
+        $user = $this->getUser();
+        $userId = $user->getId();
 //        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByUser($this->getUser());
         return $this->render(':membres:carnetDeBord.html.twig', array(
 //                    'activities' => $activities,
+                    'id' => $userId,
                     'users' => $users,
                     'mails' => $mails,
                     'formUser' => $formUser
@@ -98,7 +101,7 @@ class ViewsController extends Controller {
      * @Route("/themes", name="themes")
      * @Method({"GET"})
      */
-    public function getThemes(){
+    public function getThemes() {
         $themes = $this->getDoctrine()->getRepository(Theme::class)->findAll();
         return new JsonResponse($themes);
     }
@@ -107,24 +110,25 @@ class ViewsController extends Controller {
      * @Route("/sousTheme", name="sousTheme")
      * @Method({"GET"})
      */
-    public function getSousTheme(){
+    public function getSousTheme() {
         $sousTheme = $this->getDoctrine()->getRepository(SousTheme::class)->findAll();
         return new JsonResponse($sousTheme);
     }
+
     /**
      * @Route("/sousTheme/{id}", name="sousThemeFromTheme")
      * @Method({"GET"})
      */
-    public function getSousThemeFromTheme($id){
+    public function getSousThemeFromTheme($id) {
         $sousTheme = $this->getDoctrine()->getRepository(SousTheme::class)->findByFktheme($id);
         return new JsonResponse($sousTheme);
     }
-    
+
     /**
      * @Route("/projects", name="projects")
      * @Method({"GET"})
      */
-    public function getProjects(){
+    public function getProjects() {
         $projects = $this->getDoctrine()->getRepository(Project::class)->findAll();
         return new JsonResponse($projects);
     }
@@ -133,25 +137,25 @@ class ViewsController extends Controller {
      * @Route("/projects/{id}", name="projectsFromSousTheme")
      * @Method({"GET"})
      */
-    public function getProjectsFromSousTheme($id){
+    public function getProjectsFromSousTheme($id) {
         $projects = $this->getDoctrine()->getRepository(Project::class)->findByFksousTheme($id);
         return new JsonResponse($projects);
     }
-    
+
     /**
      * @Route("/topics", name="topics")
      * @Method({"GET"})
      */
-    public function getTopics(){
+    public function getTopics() {
         $topics = $this->getDoctrine()->getRepository(Topic::class)->findAll();
         return new JsonResponse($topics);
     }
-    
+
     /**
      * @Route("/tasks", name="tasks")
      * @Method({"GET"})
      */
-    public function getTasks(){
+    public function getTasks() {
         $tasks = $this->getDoctrine()->getRepository(Task::class)->findAll();
         return new JsonResponse($tasks);
     }
@@ -160,16 +164,16 @@ class ViewsController extends Controller {
      * @Route("/tasks/{id}", name="tasksFromProject")
      * @Method({"GET"})
      */
-    public function getTasksFromProject($id){
+    public function getTasksFromProject($id) {
         $tasks = $this->getDoctrine()->getRepository(Task::class)->findByFkproject($id);
         return new JsonResponse($tasks);
     }
-    
+
     /**
      * @Route("/posts", name="posts")
      * @Method({"GET"})
      */
-    public function getPosts(){
+    public function getPosts() {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
         return new JsonResponse($posts);
     }
@@ -178,7 +182,7 @@ class ViewsController extends Controller {
      * @Route("/posts/{id}", name="postsFromTask")
      * @Method({"GET"})
      */
-    public function getPostsFromTask($id){
+    public function getPostsFromTask($id) {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findByFktask($id);
         return new JsonResponse($posts);
     }

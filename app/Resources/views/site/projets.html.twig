@@ -14,7 +14,7 @@
 
                             <v-pane ng-repeat="theme in themes"  expanded="pane.isExpanded">
                                 <v-pane-header ng-click="getSousThemesFromTheme(theme.id)">
-                                    {{ ::theme.title}}
+                                    <h3>{{ ::theme.title}}</h3>
                                 </v-pane-header>
 
                                 <v-pane-content>
@@ -23,14 +23,14 @@
                                     <v-accordion >
                                         <v-pane ng-repeat="sousTheme in sousThemes">
                                             <v-pane-header ng-click="getProjectsFromSousTheme(sousTheme.id)" >
-                                                {{ ::sousTheme.title}}
+                                                <h4>{{ ::sousTheme.title}}</h4>
                                             </v-pane-header>
                                             <v-pane-content>
+                                                ICI FORM ADD PROJECT
                                                 <v-accordion>
                                                     <v-pane ng-repeat="project in projects">
                                                         <v-pane-header ng-click="getTasksFromProject(project.id)">
                                                             {{ ::project.title}}
-
                                                         </v-pane-header>
                                                         <v-pane-content>
                                                             <v-accordion>
@@ -43,7 +43,7 @@
                                                                             <v-pane ng-repeat="post in posts">
                                                                                 <v-pane-header>
                                                                                     <p>Auteur : {{ ::post.user}} 
-                                                                                    {{ ::post.title}}</p>
+                                                                                        {{ ::post.title}}</p>
                                                                                 </v-pane-header>
                                                                                 <v-pane-content>
                                                                                     {{ ::post.text}}

@@ -24,16 +24,16 @@
             <div>
                 <h4>Profil:</h4>
                 <div id="editProfil" class="col-lg-6 profil">
-                    <input class="col-lg-9"placeholder="Nom"/>
-                    <input class="col-lg-9"placeholder="Prenom"/>
-                    <input class="col-lg-9"placeholder="Pseudo"/>
+                    <input id="nom" class="col-lg-9"placeholder="Nom"/>
+                    <input id="prenom" class="col-lg-9"placeholder="Prenom"/>
+                    <input id="pseudo" class="col-lg-9"placeholder="Pseudo"/>
                     <a class="col-lg-9" href="">changer le mot de passe</a>
-                    <input class="col-lg-12"placeholder="Adresse"/>
-                    <input class="col-lg-9"placeholder="Ville"/>
-                    <input class="col-lg-9"placeholder="Code Postal"/>
+                    <input id="adresse" class="col-lg-12"placeholder="Adresse"/>
+                    <input id="ville" class="col-lg-9"placeholder="Ville"/>
+                    <input id="codePostal" class="col-lg-9"placeholder="Code Postal"/>
                     <div class="ijk col-lg-9">
                         <a href="">URL site</a>
-                        <input class="droite" type="submit" value="edit"/>
+                        <input id="validEditProfil"class="droite" type="submit" value="edit"/>
                     </div>
                 </div>
                 <img class="profil-img col-lg-4"atl="fk_image" src="{{ asset('image/avatar.png') }}"/>
