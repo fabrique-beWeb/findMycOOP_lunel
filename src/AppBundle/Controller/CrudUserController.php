@@ -53,7 +53,7 @@ class CrudUserController extends Controller {
     }
 
     /**
-     * @Route("/carnet/profile",name ="editprofil")
+     * @Route("/carnet/edit/profile",name ="editprofil")
      */
     public function editProfil(Request $request) {
 //        $deleteForm = $this->createDeleteForm($candidat);

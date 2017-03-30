@@ -109,7 +109,7 @@ $("#validEditProfil").click(function (e) {
         type: 'POST',
         async: false,
         dataType: 'json',
-        url: "/carnet/profile",
+        url: "/edit/profile",
         data:
                 {
                     "nom": $("#nom").val(),
@@ -124,6 +124,35 @@ $("#validEditProfil").click(function (e) {
                 },
         success: function (data, textStatus, jqXHR) {
             alert(data);
+        }
+    });
+});
+
+
+
+//Requete ajax pour remplir le formulaire d'édition
+$(".trio > li[id = profil]").click(function (e) {
+    $.ajax({
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        url: "/carnet/get/profile",
+        data:
+                {
+                    "nom": $("#nom").val(),
+                    "prenom": $("#prenom").val(),
+                    "pseudo": $("#pseudo").val(),
+                    "adresse": $("#adresse").val(),
+                    "ville": $("#ville").val(),
+                    "codePostal": $("#codePostal").val()
+                },
+        success: function (data, textStatus, jqXHR) {
+            $("#nom").val(data.nom);
+            $("#prenom").val(data.prenom);
+            $("#pseudo").val(data.pseudo);
+            $("#adresse").val(data.adresse);
+            $("#ville").val(data.ville);
+            $("#codePostal").val(data.codePostal);
         }
     });
 });

@@ -8,12 +8,14 @@ use AppBundle\Entity\SousTheme;
 use AppBundle\Entity\Task;
 use AppBundle\Entity\Theme;
 use AppBundle\Entity\Topic;
+use AppBundle\Entity\User;
 use AppBundle\Form\MailType;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class ViewsController extends Controller {
 
@@ -78,13 +80,13 @@ class ViewsController extends Controller {
         $formUser = $this->createForm(UserType::class, $u);
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         $mails = $this->getDoctrine()->getRepository('AppBundle:Mail')->findByReceiver($this->getUser());
-        $user = $this->getUser();
-        $userId = $user->getId();
+//        $user = $this->getUser();
+//        $userId = $user->getId();
 //        $posts = $this->getDoctrine()->getRepository('AppBundle:Post')->findByUser($this->getUser());
         return $this->render(':membres:carnetDeBord.html.twig', array(
 //                    'activities' => $activities,
-                    'id' => $userId,
-                    'users' => $users,
+//                    'id' => $userId,
+//                    'users' => $users,
                     'mails' => $mails,
                     'formUser' => $formUser
         ));
@@ -186,4 +188,16 @@ class ViewsController extends Controller {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findByFktask($id);
         return new JsonResponse($posts);
     }
+    
+    /**
+     * @Route("/carnet/get/profile",name ="editprofil")
+     */
+    public function getEditProfil() {
+                $users = $this->getUser();
+        $userId = $users->getId();
+        $user = $this->getDoctrine()->getRepository(User::class)->find($userId);
+        return new JsonResponse($user);
+
+    }    
+    
 }

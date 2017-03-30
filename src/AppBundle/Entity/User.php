@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
+use JsonSerializable;
 use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="fmc_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User implements UserInterface, Serializable {
+class User implements UserInterface, Serializable, JsonSerializable {
     /**
      * @var int
      *
@@ -413,6 +414,17 @@ class User implements UserInterface, Serializable {
     }
     public function __toString() {
         return $this->pseudo;
+    }
+
+    public function jsonSerialize() {
+                return array(
+            "nom" => $this->name,
+            "prenom" => $this->firstName,
+            "pseudo" => $this->pseudo,
+            "adresse" => $this->address,
+            "ville" => $this->city,
+            "codePostal" => $this->postalCode,
+        );
     }
 
 }
