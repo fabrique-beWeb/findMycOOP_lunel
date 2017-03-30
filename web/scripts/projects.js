@@ -1,3 +1,4 @@
+var currentSousTheme = null;
 var monAppli = angular.module('project', ['vAccordion', 'ngAnimate']);
 
 monAppli.controller('projectCtrl', [
@@ -101,5 +102,16 @@ monAppli.controller('projectCtrl', [
                     }
                     );
         };
+        
+        $scope.addProject = function (id) {
+            $http.post("projects/" + currentSousTheme.id)
 
+                    .then(function (response) {
+//                        $scope.showTasks = true;
+//                        $scope.showPosts = true;
+                        $scope.posts = response.data;
+                    }
+                    );
+        };
+        
     }]);

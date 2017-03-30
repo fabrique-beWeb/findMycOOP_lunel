@@ -60,6 +60,13 @@ class Project implements JsonSerializable
      * @ORM\Column(name="text", type="string", length=255)
      */
     private $text;
+    
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="datetime", type="datetime")
+     */
+    private $datetime;
 
 
     /**
@@ -118,6 +125,30 @@ class Project implements JsonSerializable
     public function getText()
     {
         return $this->text;
+    }
+    
+    /**
+     * Set datetime
+     *
+     * @param DateTime $datetime
+     *
+     * @return Post
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * Get datetime
+     *
+     * @return DateTime
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
     }
 
     public function jsonSerialize() {
