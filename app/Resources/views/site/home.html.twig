@@ -79,23 +79,19 @@
                                 <li id="profil">Mon profil</li>
                             </ul>
                         {% endif %}
+
                         {% verbatim %}
-                            <div ng-app="project">
-                                <div ng-controller="projectCtrl">
-                                    <div class="postit" ng-repeat="project in projects | orderBy: '-id' | limitTo: 10">
-                                        Nouveau Projet :
-                                        <p ng-bind="project.date:'MM/dd/yyyy'"></p>
-                                        <h4 class="activityTitle" ng-bind="project.title"></h4>
-                                        
-
-
-                                        <!--<a class="col-lg-offset-9 col-lg-3" href='{{path('projets', {'id': activity.id})}}'>détails</a>-->
-                                    </div>
+                            <section ng-app="project" ng-controller="projectCtrl">
+                                <div class="postit" ng-repeat="projectEvent in projectsEvents | orderBy: '-id' | limitTo: 10 | filter : {userBoss: userBoss.id}">
+                                    Nouvelle activite :
+                                    <p ng-bind="project.date:'MM/dd/yyyy'"></p>
+                                    <h4 class="activityTitle" ng-bind="projectEvent.title"></h4>
+                                    <!--<a class="col-lg-offset-9 col-lg-3" href='{{path('projets', {'id': activity.id})}}'>détails</a>-->
                                 </div>
-                            </div>
+                            </section>
                         </div>
+
                     {% endverbatim %}
-                    {# <a class="col-lg-offset-6 text-center" href=""/><img class="text-center" src="{{asset('image/down.png')}}"/></a>#}
                 </div>
             </section>
         {% endblock %}
