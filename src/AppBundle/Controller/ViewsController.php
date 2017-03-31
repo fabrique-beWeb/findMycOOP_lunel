@@ -143,16 +143,16 @@ class ViewsController extends Controller {
         return new JsonResponse($projects);
     }
 
-    /**
-     * @Route("/projects/user/{id}", name="projectsFromSousTheme")
-     * @Method({"GET"})
-     */
-    public function getProjectsFromUser() {
-                        $users = $this->getUser();
-        $userId = $users->getId();
-        $userProjects = $this->getDoctrine()->getRepository(Project::class)->findByfkuserBoss($userId);
-        return new JsonResponse($userProjects);
-    }
+//    /**
+//     * @Route("/projects/user/{id}", name="projectsFromSousTheme")
+//     * @Method({"GET"})
+//     */
+//    public function getProjectsFromUser() {
+//                        $users = $this->getUser();
+//        $userId = $users->getId();
+//        $userProjects = $this->getDoctrine()->getRepository(Project::class)->findByfkuserBoss($userId);
+//        return new JsonResponse($userProjects);
+//    }
 
     /**
      * @Route("/topics", name="topics")

@@ -27,7 +27,7 @@
                     <input id="nom" class="col-lg-9"/>
                     <input id="prenom" class="col-lg-9"/>
                     <input id="pseudo" class="col-lg-9"/>
-                    <a class="col-lg-9" href="">changer le mot de passe</a>
+                    <a class="col-lg-9 hide" href="">changer le mot de passe</a>
                     <input id="adresse" class="col-lg-12"/>
                     <input id="ville" class="col-lg-9"/>
                     <input id="codePostal" class="col-lg-9"/>
@@ -39,7 +39,7 @@
                 <img class="profil-img col-lg-4"atl="fk_image" src="{{ asset('image/avatar.png') }}"/>
                 <input class="col-lg-offset-10 col-lg-2" type="submit" value="Actualiser"/>
             </div>
-            {% verbatim %}
+            {#{% verbatim %}
                 <div ng-app="project">
                     <div ng-controller="projectCtrl">
                         <div class="col-lg-12 cdbprojet">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            {% endverbatim %}
+            {% endverbatim %}#}
         </section>
     </div>
 {% endblock %}
