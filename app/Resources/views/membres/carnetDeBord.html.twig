@@ -39,57 +39,25 @@
                 <img class="profil-img col-lg-4"atl="fk_image" src="{{ asset('image/avatar.png') }}"/>
                 <input class="col-lg-offset-10 col-lg-2" type="submit" value="Actualiser"/>
             </div>
-            <div class="col-lg-12 cdbprojet">
-                <h4>Projets:</h4>
-                <div class="col-lg-12 projet">
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                    <div>
-                        <p class="col-lg-6" >bla bla bla bla bla</p>
-                        <a class="col-lg-offset-1 col-lg-1">edit</a> 
-                        <a class="col-lg-offset-1 col-lg-1">quitte</a>
-                        <p class="col-lg-offset-1 col-lg-1">boss</p>
-                    </div>
-                </div>
-                <div>
-                    <button class="xyz col-lg-offset-11">Nouveau</button>
-                </div>
-            </div>
+            {% verbatim %}
+                <div ng-app="project">
+                    <div ng-controller="projectCtrl">
+                        <div class="col-lg-12 cdbprojet">
+                            <h4>Projets:</h4>
+                            <div class="col-lg-12 projet " ng-repeat="project in projects | filter:{ id: 1 }">
+                                <p class="col-lg-6" ng-bind="project.title"></p>
+                                <a class="col-lg-offset-1 col-lg-1">edit</a> 
+                                <a class="col-lg-offset-1 col-lg-1">quitte</a>
+                                <p class="col-lg-offset-1 col-lg-1">boss</p>
 
+                            </div>
+                            <div>
+                                <button class="xyz col-lg-offset-11">Nouveau</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endverbatim %}
         </section>
     </div>
 {% endblock %}

@@ -110,4 +110,16 @@ monAppli.controller('projectCtrl', [
                     }
                     );
         };
+        
+        
+                $scope.user = [];
+        $scope.getUser = function () {
+            $http.get("/get/session")
+
+                    .then(function (response) {
+                        $scope.user = response.data;
+                    }
+                    );
+        };
+        
     }]);
