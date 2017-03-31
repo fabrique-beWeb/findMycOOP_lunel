@@ -133,7 +133,7 @@ $("#validEditProfil").click(function (e) {
 
 //Requete ajax pour remplir le formulaire d'édition
 $updateFromEditProfil = false;
-$(".trio > li[id = profil]").click(function (e) {
+$(".trio > li[id = profil]").click(function (id) {
     if ($updateFromEditProfil === false) {
         $.ajax({
             type: 'GET',
@@ -157,11 +157,27 @@ $(".trio > li[id = profil]").click(function (e) {
                 $("#adresse").val(data.adresse);
                 $("#ville").val(data.ville);
                 $("#codePostal").val(data.codePostal);
-                $updateFromEditProfil = true;
 
             }
         }
         );
+//        $.ajax({
+//            type: 'GET',
+//            async: false,
+//            dataType: 'json',
+//            url: "/projects/user/"+id ,
+//            data:
+//                    {
+//                        "title": $("#title").val()
+//                    },
+//            success: function (data, textStatus, jqXHR) {
+//alert(data.title);
+////                $("#userProject").text(data.title);
+////                $updateFromEditProfil = true;
+//
+//            }
+//        }
+//        );
     }
     ;
 });
